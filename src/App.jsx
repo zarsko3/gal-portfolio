@@ -10,17 +10,7 @@ const PROJECTS = [
     year: '2024',
     thumb: '7.png', 
     description: 'A minimalist aluminum menorah exploring machining and repetition.',
-    quote: '"A reinterpretation of the traditional Hanukkah Menorah. Stripped of ornamentation, leaving only the essential: The vessel and the light."',
-    fullText: {
-      brief: 'The challenge was to hold standard candles securely without using traditional cups. By mirroring two corrugated aluminum sheets, we created natural voids.',
-      process: 'Exploration of modularity and form through hand sketching. The goal was to find a rhythm that feels both industrial and organic.',
-      result: 'A modular system held together by tension. No glue, no welding. Just two plates and two bolts. Designed for disassembly and repair.'
-    },
-    images: [
-      '4.png', // Secondary
-      '3.png', // Tertiary
-      '5.png'  // Quaternary
-    ]
+    isCustom: true
   },
   {
     id: 'yurbu',
@@ -29,7 +19,6 @@ const PROJECTS = [
     year: '2023',
     thumb: 'image_a2612f.png',
     description: 'An automatic coffee machine aiming to replace a trained barista with AI adaptation.',
-    quote: '"Redefining the morning ritual. An intelligent machine that learns your taste and perfects the brew, cup after cup."',
     fullText: {
       brief: 'Create a self-adapting coffee machine that personalizes the process for each customer by learning their preferences.',
       process: 'We focused on the interaction between the user and the machine, hiding the complexity of AI behind a simple, intuitive interface.',
@@ -48,7 +37,6 @@ const PROJECTS = [
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=2000&auto=format&fit=crop',
     description: 'A marine vessel designed for a peaceful sailing experience using rotational technology.',
-    quote: '"A sanctuary on the water. Designed for solitude and stability, allowing the user to disconnect and float."',
     fullText: {
       brief: 'Design a single-person marine vessel that provides a meditative, stable sailing experience on lakes.',
       process: 'Inspired by organic forms and water flow, the shape minimizes resistance while maximizing stability through rotational technology.',
@@ -67,7 +55,6 @@ const PROJECTS = [
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1592434134753-a70baf7979d5?q=80&w=2000&auto=format&fit=crop',
     description: 'Smart iPhone cover transforming the device into a trackable and audible tool.',
-    quote: '"Protection meets intelligence. A cover that does more than just shield your phone—it extends its capabilities."',
     fullText: {
       brief: 'Transform the iPhone case into an active, trackable device without adding significant bulk or compromising aesthetics.',
       process: 'Integration of slim tracking modules within a protective shell, using impact-resistant materials.',
@@ -86,7 +73,6 @@ const PROJECTS = [
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop',
     description: 'Solar panel maintenance capsule aimed at preventing rust and corrosion.',
-    quote: '"Efficiency through purity. A simple maintenance solution that ensures sustainable energy remains truly sustainable."',
     fullText: {
       brief: 'Develop a maintenance solution for solar panels to prevent efficiency loss due to rust and mineral buildup.',
       process: 'We designed a flow-through capsule containing natural resin that fits into standard water systems.',
@@ -105,7 +91,6 @@ const PROJECTS = [
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=2000&auto=format&fit=crop',
     description: 'Training device designed to help tennis players improve their game style.',
-    quote: '"Mastery through feedback. Bringing professional-grade analysis to the everyday court."',
     fullText: {
       brief: 'Create a training aid for tennis players that provides real-time feedback on form and style.',
       process: 'Combining motion sensors with a physical training arm to simulate realistic resistance and angles.',
@@ -165,8 +150,8 @@ const MobileBlocker = () => {
     return (
         <div className="fixed inset-0 z-[60] bg-white flex flex-col items-center justify-center p-8 text-center">
             <FadeInSection>
-                <div className="mb-8 opacity-20 animate-pulse">
-                    <Monitor size={64} />
+                <div className="mb-8 opacity-20 animate-pulse flex items-center justify-center">
+                    <Monitor size={64} className="mx-auto" />
                 </div>
                 <h1 className="text-4xl font-black tracking-tighter mb-6 uppercase">
                     Desktop<br/>Only
@@ -177,12 +162,12 @@ const MobileBlocker = () => {
                     Please view on iPad or Desktop.
                 </p>
                 
-                <div className="flex gap-8 justify-center">
-                    <a href="https://instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-500 transition-colors flex flex-col items-center gap-2">
+                <div className="flex gap-8 justify-center items-center">
+                    <a href="https://www.instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-500 transition-colors flex flex-col items-center gap-2">
                         <Instagram size={24} />
                         <span className="text-[10px] font-bold uppercase tracking-widest">Instagram</span>
                     </a>
-                    <a href="#" className="text-black hover:text-gray-500 transition-colors flex flex-col items-center gap-2">
+                    <a href="https://www.linkedin.com/in/gal-zarski/" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-500 transition-colors flex flex-col items-center gap-2">
                         <Linkedin size={24} />
                         <span className="text-[10px] font-bold uppercase tracking-widest">LinkedIn</span>
                     </a>
@@ -206,7 +191,8 @@ const HomePage = ({ onNavigate }) => {
             </FadeInSection>
             
             <FadeInSection delay={200}>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight text-black leading-tight mb-16 md:mb-24 max-w-6xl mx-auto drop-shadow-sm">
+                {/* Responsive text size from 4xl to 9xl */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight text-black leading-tight mb-16 md:mb-24 max-w-6xl mx-auto drop-shadow-sm">
                     Creating innovative designs that meet the needs of <span className="font-light italic text-gray-600">users</span> and <span className="font-light italic text-gray-600">clients</span> alike.
                 </h1>
             </FadeInSection>
@@ -232,7 +218,7 @@ const AboutPage = () => {
         <div className="flex flex-col lg:flex-row gap-20 2xl:gap-32 mb-32 relative z-10">
             {/* Image Side */}
             <div className="w-full lg:w-1/3 xl:w-1/4">
-                <FadeInSection>
+        <FadeInSection>
                     <div className="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative shadow-lg group">
                         <img 
                             src="Gal b&w.jpg" 
@@ -251,7 +237,7 @@ const AboutPage = () => {
             {/* Header Content */}
             <div className="w-full lg:w-2/3 xl:w-3/4 flex flex-col justify-center">
                 <FadeInSection delay={100}>
-                    <h1 className="text-6xl md:text-8xl xl:text-9xl 2xl:text-[10rem] font-black tracking-tighter mb-6 text-black uppercase leading-none">
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-9xl 2xl:text-[10rem] font-black tracking-tighter mb-6 text-black uppercase leading-none">
                         Gal<br/>Zarski
                     </h1>
                     <h2 className="text-sm md:text-base font-bold tracking-[0.4em] uppercase text-gray-500 mb-16">
@@ -261,8 +247,8 @@ const AboutPage = () => {
 
                 <FadeInSection delay={200}>
                     <p className="text-lg md:text-2xl xl:text-3xl font-light leading-relaxed text-gray-700 max-w-4xl mb-16">
-                        My name is Gal Zarski and I am a 36-year-old industrial designer from Tel Aviv. 
-                        With 7 years of experience in the field, I have developed a keen eye for detail and a passion for creating innovative designs that meet the needs of users and clients alike.
+                        My name is Gal Zarski and I am a <span className="font-bold text-black">36-year-old</span> industrial designer from Tel Aviv. 
+                        With <span className="font-bold text-black">7 years of experience</span> in the field, I have developed a keen eye for detail and a passion for creating innovative designs that meet the needs of users and clients alike.
                     </p>
                 </FadeInSection>
 
@@ -273,7 +259,7 @@ const AboutPage = () => {
                             <h4 className="text-xs font-bold uppercase tracking-widest text-black mb-6">Contact</h4>
                             <div className="space-y-4 text-sm md:text-base text-gray-600">
                                 <a href="mailto:Zarsko2@gmail.com" className="flex items-center gap-4 hover:text-black transition-colors"><Mail size={18}/> Email Me</a>
-                                <a href="https://instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-black transition-colors"><Instagram size={18}/> Instagram</a>
+                                <a href="https://www.instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-black transition-colors"><Instagram size={18}/> Instagram</a>
                             </div>
                         </div>
                     </div>
@@ -382,13 +368,13 @@ const ProjectsPage = ({ onNavigate }) => {
                                 </div>
 
                                 <div className="w-full md:flex-1 h-64 md:h-[500px] xl:h-[600px] bg-gray-100 overflow-hidden relative rounded-sm shadow-sm group-hover:shadow-2xl transition-all duration-500 flex items-center justify-center">
-                                    <img 
-                                        src={project.thumb} 
-                                        alt={project.title} 
+                                <img 
+                                    src={project.thumb} 
+                                    alt={project.title} 
                                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
                                         style={{objectPosition: 'center center'}}
-                                        onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop'}}
-                                    />
+                                    onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop'}}
+                                />
                                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
                                 </div>
                             </div>
@@ -407,15 +393,17 @@ const ProjectDetail = ({ project, onBack }) => {
     
     return (
         <div className="bg-white min-h-screen animate-in fade-in duration-500 relative">
+            {/* Split Screen Hero - Responsive Order */}
             <div className="flex flex-col md:flex-row h-auto md:h-[90vh] relative z-10">
                 <div className="w-full md:w-1/2 bg-[#F3F3F3] p-8 md:p-16 lg:p-24 flex flex-col justify-center relative">
                     <button onClick={onBack} className="absolute top-8 left-8 md:top-12 md:left-12 flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors">
                         <ChevronLeft size={16} /> Back
-                    </button>
+                     </button>
                     
                     <FadeInSection>
                         <div className="max-w-xl mt-12 md:mt-0">
                             <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6 block">Selected Project</span>
+                            {/* Responsive Text Size */}
                             <h1 className="text-6xl md:text-8xl xl:text-9xl font-black tracking-tighter mb-8 leading-[0.9]">
                                 {project.title.toUpperCase()}
                             </h1>
@@ -443,7 +431,7 @@ const ProjectDetail = ({ project, onBack }) => {
             <section className="py-32 md:py-48 bg-white relative z-10">
                 <div className="container mx-auto px-6 max-w-[1600px]">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                        <div>
+                    <div>
                             <FadeInSection>
                                 <h2 className="text-4xl md:text-6xl font-bold mb-8">The Challenge</h2>
                                 <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
@@ -460,9 +448,9 @@ const ProjectDetail = ({ project, onBack }) => {
                                         alt="Detail View" 
                                         onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
                                     />
-                                </div>
+                    </div>
                             </FadeInSection>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </section>
@@ -479,11 +467,11 @@ const ProjectDetail = ({ project, onBack }) => {
                                         alt="Process View" 
                                         onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
                                     />
-                                </div>
-                            </FadeInSection>
-                        </div>
+                </div>
+                    </FadeInSection>
+                </div>
                         <div className="order-1 md:order-2">
-                            <FadeInSection>
+                <FadeInSection>
                                 <h2 className="text-4xl md:text-6xl font-bold mb-8">The Process</h2>
                                 <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
                                     {project.fullText?.process}
@@ -493,7 +481,7 @@ const ProjectDetail = ({ project, onBack }) => {
                     </div>
                 </div>
             </section>
-
+            
             <section className="w-full h-[80vh] relative z-10">
                 <img 
                     src={project.thumb} 
@@ -512,20 +500,20 @@ const ProjectDetail = ({ project, onBack }) => {
                 <div className="container mx-auto px-6 max-w-[1600px]">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
                         <div className="flex flex-col justify-center">
-                             <FadeInSection>
+                            <FadeInSection>
                                 <h3 className="text-3xl font-bold mb-4">The Result</h3>
                                 <p className="text-xl text-gray-600 font-light leading-relaxed">{project.fullText?.result}</p>
                             </FadeInSection>
                         </div>
-                        <FadeInSection delay={200}>
+                             <FadeInSection delay={200}>
                             <img 
                                 src={project.images[2]} 
                                 className="w-full h-auto shadow-xl mb-10" 
                                 alt="Final Product" 
                                 onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
                             />
-                        </FadeInSection>
-                    </div>
+                             </FadeInSection>
+                     </div>
                 </div>
             </section>
         </div>
@@ -569,14 +557,14 @@ const ContactPage = () => {
                                 <div>
                                     <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Contact Details</h4>
                                     <ul className="space-y-4 text-lg text-gray-800">
-                                        <li><a href="tel:0547530732" className="hover:underline">0547-530732</a></li>
+                                        <li>0547-530732</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Socials</h4>
                                     <ul className="space-y-4 text-lg text-gray-800">
-                                        <li><a href="https://instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a></li>
-                                        <li><a href="#" className="hover:underline">LinkedIn</a></li>
+                                        <li><a href="https://www.instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a></li>
+                                        <li><a href="https://www.linkedin.com/in/gal-zarski/" target="_blank" rel="noopener noreferrer" className="hover:underline">LinkedIn</a></li>
                                         <li><a href="https://facebook.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook</a></li>
                                     </ul>
                                 </div>
