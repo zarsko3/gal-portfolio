@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, Instagram, Mail, ChevronLeft, ChevronRight, MapPin, Phone, Linkedin, PenTool, Camera, Gamepad2, Plane, Music, Globe, ArrowUpRight, Monitor, Box, Layers, Video, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight, Instagram, Mail, ChevronLeft, ChevronRight, MapPin, Phone, Linkedin, PenTool, Camera, Gamepad2, Plane, Music, Globe, ArrowUpRight, Monitor, Box, Layers, Video, Sparkles, Focus } from 'lucide-react';
 
 /* --- DATA SOURCE --- */
 const PROJECTS = [
@@ -255,8 +255,7 @@ const AboutPage = () => {
 
                 <FadeInSection delay={200}>
                     <p className="text-lg md:text-2xl xl:text-3xl font-light leading-relaxed text-gray-700 max-w-4xl mb-16">
-                        My name is Gal Zarski and I am a 36-year-old industrial designer from Tel Aviv. 
-                        With 7 years of experience in the field, I have developed a keen eye for detail and a passion for creating innovative designs that meet the needs of users and clients alike.
+                        I'm an industrial designer living in Tel Aviv with a deep passion for making things concept to production. I combine sharp attention to detail with a practical mindset to create designs that are both beautiful and built to ship.
                     </p>
                 </FadeInSection>
             </div>
@@ -667,6 +666,8 @@ export default function App() {
     setCurrentView(view);
     if (project) setSelectedProject(project);
     setIsMenuOpen(false);
+    // Scroll to top when navigating
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (isMobile) {
@@ -686,6 +687,19 @@ export default function App() {
         }`}
       >
         <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-center items-center w-full relative">
+          {/* Home/Focus Icon - Top Left */}
+          <button
+            onClick={() => navigateTo('home')}
+            className={`absolute left-6 md:left-12 lg:left-20 z-50 transition-colors duration-300 flex items-center ${
+              currentView === 'home' 
+                ? 'text-black' 
+                : 'text-gray-600 hover:text-black'
+            }`}
+            aria-label="Go to home"
+          >
+            <Focus size={18} className="md:w-5 md:h-5" strokeWidth={1.5} />
+          </button>
+
           {/* Centered Navigation */}
           <div className="hidden md:flex space-x-16 text-sm md:text-base xl:text-lg font-bold tracking-[0.2em] uppercase">
             <button 
