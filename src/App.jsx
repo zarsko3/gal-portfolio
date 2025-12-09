@@ -182,7 +182,7 @@ const MobileBlocker = () => {
 // 1. HOME
 const HomePage = ({ onNavigate }) => {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-transparent relative overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-[140px] xl:pt-40 2xl:pt-44">
         <div className="relative z-10 text-center px-6 max-w-[1600px] mx-auto">
             <FadeInSection>
                 <h2 className="text-sm md:text-lg xl:text-xl font-bold tracking-[0.2em] uppercase mb-8 md:mb-12 text-gray-500">
@@ -626,7 +626,7 @@ export default function App() {
 
       {/* Sticky Navbar */}
       <nav 
-        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out min-h-[80px] flex items-center ${
           scrolled 
             ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-100 text-black' 
             : 'py-8 mix-blend-difference text-white'
