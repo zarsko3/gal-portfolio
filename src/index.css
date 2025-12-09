@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
-html, body {
+html {
+  scroll-padding-top: 100px; /* Account for sticky navbar height */
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
   padding: 0;
   width: 100%;

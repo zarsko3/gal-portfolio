@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, Instagram, Mail, ChevronLeft, MapPin, Phone, Linkedin, PenTool, Camera, Gamepad2, Plane, Music, Globe, ArrowUpRight, Monitor } from 'lucide-react';
+import { Menu, X, ArrowRight, Instagram, Mail, ChevronLeft, ChevronRight, MapPin, Phone, Linkedin, PenTool, Camera, Gamepad2, Plane, Music, Globe, ArrowUpRight, Monitor, Box, Layers, Video, Sparkles } from 'lucide-react';
 
 /* --- DATA SOURCE --- */
 const PROJECTS = [
@@ -182,17 +182,25 @@ const MobileBlocker = () => {
 // 1. HOME
 const HomePage = ({ onNavigate }) => {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-transparent relative overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-[140px] xl:pt-40 2xl:pt-44">
-        <div className="relative z-10 text-center px-6 max-w-[1600px] mx-auto">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-transparent relative overflow-hidden pt-24 sm:pt-28 md:pt-32 laptop:pt-36 laptop-lg:pt-40 xl:pt-44 2xl:pt-48">
+        <div className="relative z-10 text-center px-6 laptop:px-8 laptop-lg:px-12 xl:px-16 max-w-[1400px] laptop:max-w-[1200px] laptop-lg:max-w-[1400px] xl:max-w-[1600px] mx-auto w-full">
             <FadeInSection>
-                <h2 className="text-sm md:text-lg xl:text-xl font-bold tracking-[0.2em] uppercase mb-8 md:mb-12 text-gray-500">
-                    Hi, I’m Gal Zarski — an industrial designer.
+                <h2 className="text-sm md:text-base laptop:text-lg laptop-lg:text-xl font-bold tracking-[0.2em] uppercase mb-6 md:mb-8 laptop:mb-10 laptop-lg:mb-12 text-gray-500">
+                    Hi, I'm Gal Zarski — an industrial designer.
                 </h2>
             </FadeInSection>
             
             <FadeInSection delay={200}>
-                {/* Responsive text size from 4xl to 9xl */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight text-black leading-tight mb-16 md:mb-24 max-w-6xl mx-auto drop-shadow-sm">
+                {/* Fluid typography with clamp() for smooth scaling across laptop sizes */}
+                <h1 
+                    className="font-bold tracking-tight text-black drop-shadow-sm mx-auto"
+                    style={{
+                        fontSize: 'clamp(2.25rem, 3.5vw + 0.5rem, 5.5rem)',
+                        lineHeight: '1.15',
+                        marginBottom: 'clamp(2.5rem, 4vw + 0.5rem, 5rem)',
+                        maxWidth: 'clamp(18rem, 80vw, 52rem)',
+                    }}
+                >
                     Creating innovative designs that meet the needs of <span className="font-light italic text-gray-600">users</span> and <span className="font-light italic text-gray-600">clients</span> alike.
                 </h1>
             </FadeInSection>
@@ -200,9 +208,9 @@ const HomePage = ({ onNavigate }) => {
             <FadeInSection delay={400}>
                 <button 
                     onClick={() => onNavigate('projects')}
-                    className="group flex items-center gap-4 mx-auto px-10 py-5 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                    className="group flex items-center gap-4 mx-auto px-8 laptop:px-10 py-4 laptop:py-5 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
                 >
-                    <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Explore Work</span>
+                    <span className="text-xs md:text-sm laptop:text-sm font-bold tracking-widest uppercase">Explore Work</span>
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
                 </button>
             </FadeInSection>
@@ -247,22 +255,9 @@ const AboutPage = () => {
 
                 <FadeInSection delay={200}>
                     <p className="text-lg md:text-2xl xl:text-3xl font-light leading-relaxed text-gray-700 max-w-4xl mb-16">
-                        My name is Gal Zarski and I am a <span className="font-bold text-black">36-year-old</span> industrial designer from Tel Aviv. 
-                        With <span className="font-bold text-black">7 years of experience</span> in the field, I have developed a keen eye for detail and a passion for creating innovative designs that meet the needs of users and clients alike.
+                        My name is Gal Zarski and I am a 36-year-old industrial designer from Tel Aviv. 
+                        With 7 years of experience in the field, I have developed a keen eye for detail and a passion for creating innovative designs that meet the needs of users and clients alike.
                     </p>
-                </FadeInSection>
-
-                {/* Contacts Row */}
-                <FadeInSection delay={300}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-gray-300 pt-12">
-                        <div>
-                            <h4 className="text-xs font-bold uppercase tracking-widest text-black mb-6">Contact</h4>
-                            <div className="space-y-4 text-sm md:text-base text-gray-600">
-                                <a href="mailto:Zarsko2@gmail.com" className="flex items-center gap-4 hover:text-black transition-colors"><Mail size={18}/> Email Me</a>
-                                <a href="https://www.instagram.com/gal.zarski" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-black transition-colors"><Instagram size={18}/> Instagram</a>
-                            </div>
-                        </div>
-                    </div>
                 </FadeInSection>
             </div>
         </div>
@@ -291,16 +286,16 @@ const AboutPage = () => {
                         <h3 className="text-2xl md:text-3xl font-bold mb-10 uppercase tracking-tight">Skills</h3>
                         <div className="grid grid-cols-2 gap-x-12 gap-y-6 text-base text-gray-600">
                             <ul className="space-y-3">
-                                <li className="flex items-center gap-3"><PenTool size={16}/> SolidWorks</li>
-                                <li className="flex items-center gap-3"><PenTool size={16}/> KeyShot</li>
-                                <li className="flex items-center gap-3"><PenTool size={16}/> Figma</li>
-                                <li className="flex items-center gap-3"><PenTool size={16}/> Photoshop</li>
+                                <li className="flex items-center gap-3"><Box size={18} className="flex-shrink-0" /> SolidWorks</li>
+                                <li className="flex items-center gap-3"><Monitor size={18} className="flex-shrink-0" /> KeyShot</li>
+                                <li className="flex items-center gap-3"><PenTool size={18} className="flex-shrink-0" /> Figma</li>
+                                <li className="flex items-center gap-3"><Camera size={18} className="flex-shrink-0" /> Photoshop</li>
                             </ul>
                             <ul className="space-y-3">
-                                <li className="flex items-center gap-3"><PenTool size={16}/> 3D Printing</li>
-                                <li className="flex items-center gap-3"><PenTool size={16}/> InDesign</li>
-                                <li className="flex items-center gap-3"><PenTool size={16}/> Premiere Pro</li>
-                                <li className="flex items-center gap-3"><PenTool size={16}/> AI Tools</li>
+                                <li className="flex items-center gap-3"><Box size={18} className="flex-shrink-0" /> 3D Printing</li>
+                                <li className="flex items-center gap-3"><Layers size={18} className="flex-shrink-0" /> InDesign</li>
+                                <li className="flex items-center gap-3"><Video size={18} className="flex-shrink-0" /> Premiere Pro</li>
+                                <li className="flex items-center gap-3"><Sparkles size={18} className="flex-shrink-0" /> AI Tools</li>
                             </ul>
                         </div>
                     </div>
@@ -344,44 +339,76 @@ const AboutPage = () => {
 const ProjectsPage = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-transparent pt-32 px-6 md:px-12 lg:px-20 pb-32 relative">
-        <div className="max-w-[1920px] mx-auto relative z-10">
+        <div className="max-w-[1400px] laptop:max-w-[1200px] laptop-lg:max-w-[1400px] xl:max-w-[1600px] mx-auto relative z-10">
             <FadeInSection>
-                <div className="flex items-end justify-between mb-16 border-b-2 border-black pb-8">
-                    <h1 className="text-6xl md:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-black">Index</h1>
-                    <span className="text-gray-500 font-mono hidden md:block text-base">SELECTED WORKS (06)</span>
+                <div className="mb-12 md:mb-16 border-b border-gray-200 pb-6 md:pb-8">
+                    <h1 className="text-4xl md:text-5xl laptop:text-6xl font-black tracking-tighter uppercase text-black mb-2">Work</h1>
+                    <p className="text-sm md:text-base text-gray-500 font-mono">SELECTED WORKS ({String(PROJECTS.length).padStart(2, '0')})</p>
                 </div>
             </FadeInSection>
 
-            <div className="flex flex-col">
-                {PROJECTS.map((project, index) => (
-                   <FadeInSection key={project.id} delay={index * 50}>
-                        <div 
-                            className="group w-full border-b border-gray-200 py-16 md:py-24 cursor-pointer hover:bg-white/50 transition-colors rounded-xl px-4 md:px-0"
-                            onClick={() => onNavigate('detail', project)}
-                        >
-                            <div className="flex flex-col md:flex-row items-center w-full gap-12 xl:gap-24">
-                                <div className="flex items-baseline gap-12 w-full md:w-1/3">
-                                    <span className="text-xl md:text-2xl font-mono text-gray-400 group-hover:text-black transition-colors">0{index + 1}</span>
-                                    <h2 className="text-5xl md:text-7xl xl:text-8xl font-bold uppercase tracking-tight group-hover:translate-x-4 transition-transform duration-500">
-                                        {project.title}
-                                    </h2>
-                                </div>
+            {/* 4+2 Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 laptop:gap-12">
+                {PROJECTS.map((project, index) => {
+                    // Determine if this item should span 2 columns (items 5-6, 11-12, etc. in each cycle of 6)
+                    const positionInCycle = index % 6;
+                    const shouldSpanTwo = positionInCycle >= 4; // Items at positions 4 and 5 (5th and 6th items) span 2 columns
+                    
+                    return (
+                       <FadeInSection key={project.id} delay={index * 50}>
+                            <div 
+                                className={`group cursor-pointer ${
+                                    shouldSpanTwo ? 'md:col-span-2' : ''
+                                }`}
+                                onClick={() => onNavigate('detail', project)}
+                            >
+                                {/* Card */}
+                                <div className="flex flex-col h-full">
+                                    {/* Image */}
+                                    <div className="aspect-[3/4] bg-gray-100 overflow-hidden relative mb-6 rounded-sm">
+                                        <img 
+                                            src={project.thumb} 
+                                            alt={project.title} 
+                                            className="w-full h-full object-cover transition-[filter,opacity] duration-300 ease-out blur-0 md:blur-[2px] md:group-hover:blur-0 group-hover:opacity-90 focus:blur-0 active:blur-0"
+                                            style={{objectPosition: 'center center'}}
+                                            onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop'}}
+                                        />
+                                    </div>
 
-                                <div className="w-full md:flex-1 h-64 md:h-[500px] xl:h-[600px] bg-gray-100 overflow-hidden relative rounded-sm shadow-sm group-hover:shadow-2xl transition-all duration-500 flex items-center justify-center">
-                                <img 
-                                    src={project.thumb} 
-                                    alt={project.title} 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                                        style={{objectPosition: 'center center'}}
-                                    onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop'}}
-                                />
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
+                                    {/* Minimal Text */}
+                                    <div className="space-y-3 flex-1">
+                                        <h2 className="text-lg md:text-xl font-light tracking-tight text-black leading-tight">
+                                            {project.title}
+                                        </h2>
+                                        <p className="text-sm text-gray-500 font-light leading-relaxed line-clamp-2">
+                                            {project.description}
+                                        </p>
+                                    </div>
+
+                                    {/* Project Index Number */}
+                                    <div className="mt-6 pt-6 border-t border-gray-100">
+                                        <span className="text-xs font-mono text-gray-400">
+                                            {String(index + 1).padStart(2, '0')}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                   </FadeInSection>
-                ))}
+                       </FadeInSection>
+                    );
+                })}
             </div>
+
+            {/* Ensure group-hover blur works with proper CSS specificity */}
+            <style>{`
+                @media (min-width: 768px) {
+                    .group:hover img {
+                        filter: blur(0px) !important;
+                    }
+                    .group img {
+                        transition: filter 300ms ease-out, opacity 300ms ease-out;
+                    }
+                }
+            `}</style>
         </div>
     </div>
   );
@@ -588,25 +615,53 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [currentView, selectedProject]);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          
+          // Show navbar when scrolled past threshold
+          setScrolled(currentScrollY > 10);
+          
+          // Auto-hide/show navbar on scroll
+          if (currentScrollY < 10) {
+            // Always show at top
+            setNavbarVisible(true);
+          } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling down - hide navbar
+            setNavbarVisible(false);
+          } else if (currentScrollY < lastScrollY) {
+            // Scrolling up - show navbar
+            setNavbarVisible(true);
+          }
+          
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+    
     const handleResize = () => {
         setIsMobile(window.innerWidth < 768);
     };
     
     handleResize();
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize);
     return () => {
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [lastScrollY]);
 
   const navigateTo = (view, project = null) => {
     setCurrentView(view);
@@ -626,25 +681,49 @@ export default function App() {
 
       {/* Sticky Navbar */}
       <nav 
-        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out min-h-[80px] flex items-center ${
-          scrolled 
-            ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-100 text-black' 
-            : 'py-8 mix-blend-difference text-white'
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out min-h-[80px] flex items-center bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 text-black ${
+          navbarVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center">
-          <div className="w-10"></div> 
-          
+        <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-center items-center w-full relative">
+          {/* Centered Navigation */}
           <div className="hidden md:flex space-x-16 text-sm md:text-base xl:text-lg font-bold tracking-[0.2em] uppercase">
-            <button onClick={() => navigateTo('about')} className="hover:opacity-60 transition-opacity">About</button>
-            <button onClick={() => navigateTo('projects')} className="hover:opacity-60 transition-opacity">Work</button>
-            <button onClick={() => navigateTo('contact')} className="hover:opacity-60 transition-opacity">Contact</button>
+            <button 
+              onClick={() => navigateTo('about')} 
+              className={`relative transition-all duration-300 ${
+                currentView === 'about' 
+                  ? 'text-black after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[1px] after:bg-black' 
+                  : 'text-gray-600 hover:text-black hover:opacity-80'
+              }`}
+            >
+              About
+            </button>
+            <button 
+              onClick={() => navigateTo('projects')} 
+              className={`relative transition-all duration-300 ${
+                currentView === 'projects' 
+                  ? 'text-black after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[1px] after:bg-black' 
+                  : 'text-gray-600 hover:text-black hover:opacity-80'
+              }`}
+            >
+              Work
+            </button>
+            <button 
+              onClick={() => navigateTo('contact')} 
+              className={`relative transition-all duration-300 ${
+                currentView === 'contact' 
+                  ? 'text-black after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[1px] after:bg-black' 
+                  : 'text-gray-600 hover:text-black hover:opacity-80'
+              }`}
+            >
+              Contact
+            </button>
           </div>
 
+          {/* Mobile Menu Button - Positioned absolutely on the right */}
           <button 
-            className="md:hidden z-50" 
+            className="md:hidden absolute right-6 z-50 text-black" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            style={{ color: isMenuOpen ? 'black' : 'inherit' }}
           >
             {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
@@ -653,11 +732,47 @@ export default function App() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-10 text-4xl font-light text-black animate-in fade-in zoom-in duration-300">
-          <button onClick={() => navigateTo('home')}>Home</button>
-          <button onClick={() => navigateTo('projects')}>Work</button>
-          <button onClick={() => navigateTo('about')}>About</button>
-          <button onClick={() => navigateTo('contact')}>Contact</button>
+        <div className="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center space-y-10 text-4xl font-light text-black animate-in fade-in zoom-in duration-300">
+          <button 
+            onClick={() => navigateTo('home')}
+            className={`transition-all duration-300 ${
+              currentView === 'home' 
+                ? 'text-black font-bold border-b-2 border-black pb-2' 
+                : 'text-gray-600 hover:text-black'
+            }`}
+          >
+            Home
+          </button>
+          <button 
+            onClick={() => navigateTo('projects')}
+            className={`transition-all duration-300 ${
+              currentView === 'projects' 
+                ? 'text-black font-bold border-b-2 border-black pb-2' 
+                : 'text-gray-600 hover:text-black'
+            }`}
+          >
+            Work
+          </button>
+          <button 
+            onClick={() => navigateTo('about')}
+            className={`transition-all duration-300 ${
+              currentView === 'about' 
+                ? 'text-black font-bold border-b-2 border-black pb-2' 
+                : 'text-gray-600 hover:text-black'
+            }`}
+          >
+            About
+          </button>
+          <button 
+            onClick={() => navigateTo('contact')}
+            className={`transition-all duration-300 ${
+              currentView === 'contact' 
+                ? 'text-black font-bold border-b-2 border-black pb-2' 
+                : 'text-gray-600 hover:text-black'
+            }`}
+          >
+            Contact
+          </button>
         </div>
       )}
 
