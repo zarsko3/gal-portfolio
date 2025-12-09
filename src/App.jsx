@@ -5,11 +5,33 @@ import { Menu, X, ArrowRight, Instagram, Mail, ChevronLeft, ChevronRight, MapPin
 const PROJECTS = [
   {
     id: 'line8',
-    title: 'Line 8',
+    title: 'LINE•8',
+    subtitle: 'Hanukkiah',
     category: 'Product Design',
     year: '2024',
-    thumb: '7.png', 
-    description: 'A minimalist aluminum menorah exploring machining and repetition.',
+    thumb: '7.png',
+    heroImage: '6.png',
+    description: 'A minimalist Hanukkiah crafted for precision, simplicity, and longevity.',
+    quote: 'A minimalist Hanukkiah crafted for precision, simplicity, and longevity.',
+    fullText: {
+      brief: 'Create a full, functional Hanukkiah with extreme simplicity: a complete form produced in a single press operation, without complex assembly or unnecessary parts. LINE•8 embraces the beauty of the material in its natural state, taking a familiar, timeless object and elevating it into something precise, premium, and built to last.',
+      process: 'The process always starts small. An idea grows through quick, hands-on iterations. First come fast sketches to explore proportion, candle spacing, and the core silhouette. Then the design moves into digital modeling to lock geometry and tolerances. Finally, 3D prints and feasibility tests validate scale, stability, and real-world usability before final production.',
+      design: 'LINE•8 is intentionally minimal. Clean surfaces, sharp geometry, and calm proportions let the object speak without decoration. Aluminum was chosen for precision, durability, and a refined feel. The finish is oven-cured powder coating for a clean, resilient surface. Multiple color options are offered while preserving the same iconic form.',
+      result: 'A modern take on a classic ritual object. Simple, premium, and satisfying to use. The final presentation continues the same philosophy with a minimal, elegant package that protects the product and feels intentional from the first moment you open it.'
+    },
+    challengeImage: '13.jpg',
+    challengeImages: [
+      { src: '2.png', caption: '' },
+      { src: '9.png', caption: '' },
+      { src: '10.png', caption: '' }
+    ],
+    processImages: [
+      { src: '2.png', caption: 'Early sketch studies. Form and proportions.' },
+      { src: '9.png', caption: 'Prototype iterations. Testing usability and scale.' },
+      { src: '10.png', caption: 'Packaging exploration. Minimal, protective, gift-ready.' }
+    ],
+    designImage: '4.png',
+    resultImage: '8.png',
     isCustom: true
   },
   {
@@ -428,10 +450,12 @@ const ProjectDetail = ({ project, onBack }) => {
                     
                     <FadeInSection>
                         <div className="max-w-xl mt-12 md:mt-0">
-                            <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6 block">Selected Project</span>
+                            {project.subtitle && (
+                                <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2 block">{project.subtitle}</span>
+                            )}
                             {/* Responsive Text Size */}
                             <h1 className="text-6xl md:text-8xl xl:text-9xl font-black tracking-tighter mb-8 leading-[0.9]">
-                                {project.title.toUpperCase()}
+                                {project.title}
                             </h1>
                             <div className="w-16 h-1 bg-black mb-10"></div>
                             {project.quote && (
@@ -445,7 +469,7 @@ const ProjectDetail = ({ project, onBack }) => {
 
                 <div className="w-full md:w-1/2 h-[50vh] md:h-auto bg-gray-200 relative overflow-hidden flex items-center justify-center">
                     <img 
-                        src={project.thumb} 
+                        src={project.heroImage || project.thumb} 
                         className="absolute inset-0 w-full h-full object-cover" 
                         alt={project.title}
                         style={{objectPosition: 'center center'}}
@@ -456,71 +480,180 @@ const ProjectDetail = ({ project, onBack }) => {
 
             <section className="py-32 md:py-48 bg-white relative z-10">
                 <div className="container mx-auto px-6 max-w-[1600px]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                    <div>
-                            <FadeInSection>
-                                <h2 className="text-4xl md:text-6xl font-bold mb-8">The Challenge</h2>
-                                <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
-                                    {project.fullText?.brief || project.description}
-                                </p>
-                            </FadeInSection>
+                    {project.challengeImage ? (
+                        // Custom Challenge layout for LINE•8
+                        <div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center mb-16">
+                                <div>
+                                    <FadeInSection>
+                                        <h2 className="text-4xl md:text-6xl font-bold mb-8">The Challenge</h2>
+                                        <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed">
+                                            {project.fullText?.brief || project.description}
+                                        </p>
+                                    </FadeInSection>
+                                </div>
+                                <div className="relative">
+                                    <FadeInSection delay={200}>
+                                        <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                            <img 
+                                                src={project.challengeImage} 
+                                                className="w-full h-auto object-cover" 
+                                                alt="Challenge View" 
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                            />
+                                        </div>
+                                    </FadeInSection>
+                                </div>
+                            </div>
                         </div>
-                        <div className="relative">
-                            <FadeInSection delay={200}>
-                                <div className="bg-gray-50 p-8 md:p-12 rounded-sm shadow-sm aspect-square flex items-center justify-center overflow-hidden">
-                                    <img 
-                                        src={project.images[0]} 
-                                        className="w-full h-full object-cover" 
-                                        alt="Detail View" 
-                                        onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                    />
-                    </div>
-                            </FadeInSection>
-                    </div>
-                    </div>
+                    ) : (
+                        // Default Challenge layout
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                            <div>
+                                <FadeInSection>
+                                    <h2 className="text-4xl md:text-6xl font-bold mb-8">The Challenge</h2>
+                                    <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
+                                        {project.fullText?.brief || project.description}
+                                    </p>
+                                </FadeInSection>
+                            </div>
+                            <div className="relative">
+                                <FadeInSection delay={200}>
+                                    <div className="bg-gray-50 p-8 md:p-12 rounded-sm shadow-sm aspect-square flex items-center justify-center overflow-hidden">
+                                        {project.images && project.images[0] ? (
+                                            <img 
+                                                src={project.images[0]} 
+                                                className="w-full h-full object-cover" 
+                                                alt="Detail View" 
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                            />
+                                        ) : (
+                                            <img 
+                                                src={project.thumb} 
+                                                className="w-full h-full object-cover" 
+                                                alt="Detail View" 
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                            />
+                                        )}
+                                    </div>
+                                </FadeInSection>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
             <section className="py-32 md:py-48 bg-[#FAFAFA] relative z-10">
                 <div className="container mx-auto px-6 max-w-[1600px]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                        <div className="order-2 md:order-1">
-                            <FadeInSection delay={200}>
-                                <div className="bg-white p-8 md:p-12 rounded-sm shadow-sm aspect-square flex items-center justify-center overflow-hidden">
-                                    <img 
-                                        src={project.images[1]} 
-                                        className="w-full h-full object-cover" 
-                                        alt="Process View" 
-                                        onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                    />
-                </div>
-                    </FadeInSection>
-                </div>
-                        <div className="order-1 md:order-2">
-                <FadeInSection>
+                    {project.processImages && project.processImages.length > 0 ? (
+                        // Custom Process section with three images in a row (for LINE•8)
+                        <>
+                            <FadeInSection>
                                 <h2 className="text-4xl md:text-6xl font-bold mb-8">The Process</h2>
-                                <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
-                                    {project.fullText?.process}
+                                <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-16 max-w-4xl">
+                                    {project.fullText?.process || project.description}
                                 </p>
                             </FadeInSection>
+                            <FadeInSection delay={200}>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                                    {project.processImages.map((item, index) => (
+                                        <div key={index} className="flex flex-col">
+                                            <div className="bg-white p-6 md:p-8 rounded-sm shadow-sm aspect-square overflow-hidden w-full">
+                                                <img 
+                                                    className="w-full h-full object-cover" 
+                                                    alt={item.caption} 
+                                                    src={item.src}
+                                                />
+                                            </div>
+                                            {item.caption && (
+                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                    {item.caption}
+                                                </p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </FadeInSection>
+                        </>
+                    ) : (
+                        // Default Process section layout
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                            <div className="order-2 md:order-1">
+                                <FadeInSection delay={200}>
+                                    <div className="bg-white p-8 md:p-12 rounded-sm shadow-sm aspect-square flex items-center justify-center overflow-hidden">
+                                        {project.images && project.images[1] ? (
+                                            <img 
+                                                src={project.images[1]} 
+                                                className="w-full h-full object-cover" 
+                                                alt="Process View" 
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                            />
+                                        ) : (
+                                            <img 
+                                                src={project.thumb} 
+                                                className="w-full h-full object-cover" 
+                                                alt="Process View" 
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                            />
+                                        )}
+                                    </div>
+                                </FadeInSection>
+                            </div>
+                            <div className="order-1 md:order-2">
+                                <FadeInSection>
+                                    <h2 className="text-4xl md:text-6xl font-bold mb-8">The Process</h2>
+                                    <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
+                                        {project.fullText?.process || project.description}
+                                    </p>
+                                </FadeInSection>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </section>
             
-            <section className="w-full h-[80vh] relative z-10">
-                <img 
-                    src={project.thumb} 
-                    className="w-full h-full object-cover" 
-                    alt="Atmosphere" 
-                    onError={(e) => e.target.src='https://via.placeholder.com/1600x900'} 
-                />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <FadeInSection>
-                        <h2 className="text-white text-5xl md:text-9xl font-bold tracking-tight mix-blend-overlay opacity-90">DESIGN</h2>
-                    </FadeInSection>
-                </div>
-            </section>
+            {project.fullText?.design ? (
+                <section className="py-32 md:py-48 bg-white relative z-10">
+                    <div className="container mx-auto px-6 max-w-[1600px]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                            <div>
+                                <FadeInSection>
+                                    <h2 className="text-4xl md:text-6xl font-bold mb-8">Design</h2>
+                                    <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed">
+                                        {project.fullText.design}
+                                    </p>
+                                </FadeInSection>
+                            </div>
+                            <div className="relative">
+                                <FadeInSection delay={200}>
+                                    <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                        <img 
+                                            src={project.designImage || project.thumb} 
+                                            className="w-full h-auto object-cover" 
+                                            alt="Design Detail" 
+                                            onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                        />
+                                    </div>
+                                </FadeInSection>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            ) : (
+                <section className="w-full h-[80vh] relative z-10">
+                    <img 
+                        src={project.thumb} 
+                        className="w-full h-full object-cover" 
+                        alt="Atmosphere" 
+                        onError={(e) => e.target.src='https://via.placeholder.com/1600x900'} 
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <FadeInSection>
+                            <h2 className="text-white text-5xl md:text-9xl font-bold tracking-tight mix-blend-overlay opacity-90">DESIGN</h2>
+                        </FadeInSection>
+                    </div>
+                </section>
+            )}
 
             <section className="py-32 md:py-48 bg-white relative z-10">
                 <div className="container mx-auto px-6 max-w-[1600px]">
@@ -528,17 +661,19 @@ const ProjectDetail = ({ project, onBack }) => {
                         <div className="flex flex-col justify-center">
                             <FadeInSection>
                                 <h3 className="text-3xl font-bold mb-4">The Result</h3>
-                                <p className="text-xl text-gray-600 font-light leading-relaxed">{project.fullText?.result}</p>
+                                <p className="text-xl text-gray-600 font-light leading-relaxed">{project.fullText?.result || project.description}</p>
                             </FadeInSection>
                         </div>
-                             <FadeInSection delay={200}>
-                            <img 
-                                src={project.images[2]} 
-                                className="w-full h-auto shadow-xl mb-10" 
-                                alt="Final Product" 
-                                onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
-                            />
-                             </FadeInSection>
+                        <FadeInSection delay={200}>
+                            <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                <img 
+                                    src={project.resultImage || (project.images && project.images[2]) || project.thumb} 
+                                    className="w-full h-auto object-cover" 
+                                    alt="Final Product" 
+                                    onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
+                                />
+                            </div>
+                        </FadeInSection>
                      </div>
                 </div>
             </section>
