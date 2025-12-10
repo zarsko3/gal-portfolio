@@ -36,15 +36,17 @@ const PROJECTS = [
   },
   {
     id: 'yurbu',
-    title: 'Yurbu',
+    title: 'YURBU',
     category: 'Consumer Electronics',
     year: '2023',
     thumb: 'image_a2612f.png',
-    description: 'An automatic coffee machine aiming to replace a trained barista with AI adaptation.',
+    description: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
+    quote: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     fullText: {
-      brief: 'Create a self-adapting coffee machine that personalizes the process for each customer by learning their preferences.',
-      process: 'We focused on the interaction between the user and the machine, hiding the complexity of AI behind a simple, intuitive interface.',
-      result: 'A sleek, automated countertop device that bridges the gap between professional barista quality and home convenience.'
+      brief: 'Great coffee is often slowed down by friction: waiting, repeating an order, and inconsistent results. YURBU tackles this by learning habits and preferences, then using ongoing data gathering to continuously improve performance over time.',
+      process: 'YURBU combines product design with a digital experience. Alongside the machine concept, an accompanying UI layer supports customization and repeatability, so personalization feels simple and intuitive rather than overly technical. Visual development moved between clean concept renders and real-world validation, building the project beyond a single image into a complete design story.',
+      design: 'A minimal, premium appliance language that fits naturally in a modern kitchen, paired with an experience that remembers the user and removes unnecessary steps while keeping interaction clear and familiar.',
+      result: 'A cohesive hardware and UI concept: a coffee machine that does not just make coffee, it gets better at making your coffee.'
     },
     images: [
       'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop',
@@ -54,15 +56,17 @@ const PROJECTS = [
   },
   {
     id: 'hezus',
-    title: 'Hezus',
+    title: 'HEZUS',
     category: 'Marine Design',
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=2000&auto=format&fit=crop',
-    description: 'A marine vessel designed for a peaceful sailing experience using rotational technology.',
+    description: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
+    quote: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
     fullText: {
-      brief: 'Design a single-person marine vessel that provides a meditative, stable sailing experience on lakes.',
-      process: 'Inspired by organic forms and water flow, the shape minimizes resistance while maximizing stability through rotational technology.',
-      result: 'A unique sailing vessel for those desiring a peaceful escape from the hustle and bustle of everyday life.'
+      brief: 'Many small vessels can feel unstable and demanding. HEZUS aims to shift the focus from effort to ease by designing a solo craft centered on tranquility, comfort, and confidence on the water, using rotational technology to reduce typical on-water stress.',
+      process: 'The concept was developed through iterative form exploration and proportion studies, followed by surface refinement and visualization. Multiple render iterations helped validate the identity and how the vessel reads from different angles, while color variations ensured the design language stays consistent across finishes.',
+      design: 'A sculpted, approachable silhouette that communicates stability and comfort. The visual language is calm and friendly rather than aggressive, supporting the idea of a quiet personal escape.',
+      result: 'A distinctive leisure concept designed to help users disconnect from daily noise and enjoy a peaceful solo ride on the water.'
     },
     images: [
       'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=2000&auto=format&fit=crop',
@@ -72,15 +76,17 @@ const PROJECTS = [
   },
   {
     id: 'testudo',
-    title: 'Testudo Tech',
+    title: 'TESTODO',
     category: 'Tech Accessories',
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1592434134753-a70baf7979d5?q=80&w=2000&auto=format&fit=crop',
-    description: 'Smart iPhone cover transforming the device into a trackable and audible tool.',
+    description: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
+    quote: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
     fullText: {
-      brief: 'Transform the iPhone case into an active, trackable device without adding significant bulk or compromising aesthetics.',
-      process: 'Integration of slim tracking modules within a protective shell, using impact-resistant materials.',
-      result: 'A simple yet effective solution for users who want to upgrade their phone capabilities seamlessly.'
+      brief: 'Most "smart" accessories look bulky or obviously tech-driven. The goal was to design a cover that blends in like a regular phone case, while adding the capability to be tracked and located by sound, without sacrificing the aesthetic appearance of the device.',
+      process: 'The project focused on integrating "invisible" capability into an everyday object. The design was developed around usability and simplicity, ensuring the added features feel natural and do not change how the case is used day to day.',
+      design: 'A clean, minimal design language with calm surfaces and a familiar silhouette. The form is intentionally understated so the smart functionality stays in the background and the product still feels like a normal case first.',
+      result: 'A simple, effective solution for users who want to upgrade their phone with practical tracking and audible location features, without adding bulk or compromising the iPhone\'s appearance.'
     },
     images: [
       'https://images.unsplash.com/photo-1603313011101-320f26a4f6f6?q=80&w=2000&auto=format&fit=crop',
@@ -90,15 +96,17 @@ const PROJECTS = [
   },
   {
     id: 'greenbrush',
-    title: 'Green Brush',
+    title: 'GREEN BRUSH',
     category: 'Sustainability',
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop',
-    description: 'Solar panel maintenance capsule aimed at preventing rust and corrosion.',
+    description: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
+    quote: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
     fullText: {
-      brief: 'Develop a maintenance solution for solar panels to prevent efficiency loss due to rust and mineral buildup.',
-      process: 'We designed a flow-through capsule containing natural resin that fits into standard water systems.',
-      result: 'A maintenance-free solution that ensures solar panels operate at optimal capacity for years.'
+      brief: 'Solar panels can lose performance over time due to impurities and corrosion-related issues. GREEN BRUSH addresses this by introducing a small capsule containing a natural resin, designed to be inserted into the water transportation system. As water passes through the capsule, it becomes distilled and impurities that could cause damage or decrease efficiency are removed.',
+      process: 'The concept was developed around real maintenance flow. First, define how the capsule integrates into existing water transport and how a user installs it quickly and correctly. Then refine the form through iterations that balance durability, grip, and clear functional cues. Finally, validate the concept through physical-scale checks and visual development to ensure it reads as a robust, service-friendly product.',
+      design: 'A clean, functional cylindrical form with a no-nonsense "tool" feel. The capsule is designed to work within the water system, and it can also connect to an external faucet to support external cleaning of the panels, keeping maintenance accessible and straightforward.',
+      result: 'A simple product concept that supports long-term solar panel maintenance and helps keep panels working at their optimal capacity through cleaner water and easier cleaning routines.'
     },
     images: [
       'https://images.unsplash.com/photo-1545208639-654c60920b66?q=80&w=2000&auto=format&fit=crop',
@@ -108,15 +116,17 @@ const PROJECTS = [
   },
   {
     id: 'strikeco',
-    title: 'Strikeco',
+    title: 'STRIKECOSENSE',
     category: 'Sports Tech',
     year: '2023',
     thumb: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=2000&auto=format&fit=crop',
-    description: 'Training device designed to help tennis players improve their game style.',
+    description: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
+    quote: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
     fullText: {
-      brief: 'Create a training aid for tennis players that provides real-time feedback on form and style.',
-      process: 'Combining motion sensors with a physical training arm to simulate realistic resistance and angles.',
-      result: 'The perfect tool for players looking to take their game to the next level through interactive feedback.'
+      brief: 'Training can be repetitive without clear feedback or progression. STRIKECOSENSE was designed to serve both beginners and experienced players by combining a physical training device with a digital layer that makes practice more engaging, measurable, and skill-focused.',
+      process: 'The concept was developed as a full ecosystem rather than a standalone object. Form iterations focused on stability, interaction points, and a clear sports-tech identity. In parallel, the app and simulator experience was shaped to support a repeatable training loop that encourages improvement over time.',
+      design: 'A compact, approachable product language that communicates where and how to interact. The form is performance-forward but intentionally simple, keeping the user focused on training rather than setup.',
+      result: 'A cohesive training concept that combines hardware and software into a single experience, helping users practice more effectively and push their gameplay to the next level.'
     },
     images: [
       'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=2000&auto=format&fit=crop',
@@ -478,203 +488,144 @@ const ProjectDetail = ({ project, onBack }) => {
                 </div>
             </div>
 
-            <section className="py-32 md:py-48 bg-white relative z-10">
-                <div className="container mx-auto px-6 max-w-[1600px]">
-                    {project.challengeImage ? (
-                        // Custom Challenge layout for LINE•8
-                        <div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center mb-16">
-                                <div>
-                                    <FadeInSection>
-                                        <h2 className="text-4xl md:text-6xl font-bold mb-8">The Challenge</h2>
-                                        <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed">
-                                            {project.fullText?.brief || project.description}
-                                        </p>
-                                    </FadeInSection>
-                                </div>
-                                <div className="relative">
-                                    <FadeInSection delay={200}>
-                                        <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
-                                            <img 
-                                                src={project.challengeImage} 
-                                                className="w-full h-auto object-cover" 
-                                                alt="Challenge View" 
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                            />
-                                        </div>
-                                    </FadeInSection>
-                                </div>
-                            </div>
+            {/* The Challenge Section */}
+            <section className="py-16 md:py-24 bg-white relative z-10">
+                <div className="max-w-6xl mx-auto px-6 md:px-10">
+                    <FadeInSection>
+                        <div className="max-w-prose space-y-6">
+                            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">The Challenge</h2>
+                            <p className="text-base md:text-lg leading-relaxed text-gray-600">
+                                {project.fullText?.brief || project.description}
+                            </p>
                         </div>
-                    ) : (
-                        // Default Challenge layout
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                            <div>
-                                <FadeInSection>
-                                    <h2 className="text-4xl md:text-6xl font-bold mb-8">The Challenge</h2>
-                                    <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
-                                        {project.fullText?.brief || project.description}
-                                    </p>
-                                </FadeInSection>
+                    </FadeInSection>
+                    {project.challengeImage && (
+                        <FadeInSection delay={200}>
+                            <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                <img 
+                                    src={project.challengeImage} 
+                                    className="w-full h-auto object-cover" 
+                                    alt="Challenge View" 
+                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                />
                             </div>
-                            <div className="relative">
-                                <FadeInSection delay={200}>
-                                    <div className="bg-gray-50 p-8 md:p-12 rounded-sm shadow-sm aspect-square flex items-center justify-center overflow-hidden">
-                                        {project.images && project.images[0] ? (
-                                            <img 
-                                                src={project.images[0]} 
-                                                className="w-full h-full object-cover" 
-                                                alt="Detail View" 
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                            />
-                                        ) : (
-                                            <img 
-                                                src={project.thumb} 
-                                                className="w-full h-full object-cover" 
-                                                alt="Detail View" 
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                            />
-                                        )}
-                                    </div>
-                                </FadeInSection>
+                        </FadeInSection>
+                    )}
+                    {project.images && project.images[0] && !project.challengeImage && (
+                        <FadeInSection delay={200}>
+                            <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                <img 
+                                    src={project.images[0]} 
+                                    className="w-full h-auto object-cover" 
+                                    alt="Challenge View" 
+                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                />
                             </div>
-                        </div>
+                        </FadeInSection>
                     )}
                 </div>
             </section>
 
-            <section className="py-32 md:py-48 bg-[#FAFAFA] relative z-10">
-                <div className="container mx-auto px-6 max-w-[1600px]">
+            {/* The Process Section */}
+            <section className="py-16 md:py-24 bg-[#FAFAFA] relative z-10">
+                <div className="max-w-6xl mx-auto px-6 md:px-10">
+                    <FadeInSection>
+                        <div className="max-w-prose space-y-6">
+                            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">The Process</h2>
+                            <p className="text-base md:text-lg leading-relaxed text-gray-600">
+                                {project.fullText?.process || project.description}
+                            </p>
+                        </div>
+                    </FadeInSection>
                     {project.processImages && project.processImages.length > 0 ? (
-                        // Custom Process section with three images in a row (for LINE•8)
-                        <>
-                            <FadeInSection>
-                                <h2 className="text-4xl md:text-6xl font-bold mb-8">The Process</h2>
-                                <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-16 max-w-4xl">
-                                    {project.fullText?.process || project.description}
-                                </p>
-                            </FadeInSection>
-                            <FadeInSection delay={200}>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                                    {project.processImages.map((item, index) => (
-                                        <div key={index} className="flex flex-col">
-                                            <div className="bg-white p-6 md:p-8 rounded-sm shadow-sm aspect-square overflow-hidden w-full">
-                                                <img 
-                                                    className="w-full h-full object-cover" 
-                                                    alt={item.caption} 
-                                                    src={item.src}
-                                                />
-                                            </div>
-                                            {item.caption && (
-                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
-                                                    {item.caption}
-                                                </p>
-                                            )}
+                        <FadeInSection delay={200}>
+                            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                                {project.processImages.map((item, index) => (
+                                    <div key={index} className="flex flex-col">
+                                        <div className="bg-white p-6 md:p-8 rounded-sm shadow-sm aspect-square overflow-hidden w-full">
+                                            <img 
+                                                className="w-full h-full object-cover" 
+                                                alt={item.caption} 
+                                                src={item.src}
+                                            />
                                         </div>
-                                    ))}
-                                </div>
-                            </FadeInSection>
-                        </>
-                    ) : (
-                        // Default Process section layout
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                            <div className="order-2 md:order-1">
-                                <FadeInSection delay={200}>
-                                    <div className="bg-white p-8 md:p-12 rounded-sm shadow-sm aspect-square flex items-center justify-center overflow-hidden">
-                                        {project.images && project.images[1] ? (
-                                            <img 
-                                                src={project.images[1]} 
-                                                className="w-full h-full object-cover" 
-                                                alt="Process View" 
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                            />
-                                        ) : (
-                                            <img 
-                                                src={project.thumb} 
-                                                className="w-full h-full object-cover" 
-                                                alt="Process View" 
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                            />
+                                        {item.caption && (
+                                            <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                {item.caption}
+                                            </p>
                                         )}
                                     </div>
-                                </FadeInSection>
+                                ))}
                             </div>
-                            <div className="order-1 md:order-2">
-                                <FadeInSection>
-                                    <h2 className="text-4xl md:text-6xl font-bold mb-8">The Process</h2>
-                                    <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
-                                        {project.fullText?.process || project.description}
-                                    </p>
-                                </FadeInSection>
-                            </div>
-                        </div>
+                        </FadeInSection>
+                    ) : (
+                        project.images && project.images[1] && (
+                            <FadeInSection delay={200}>
+                                <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                    <img 
+                                        src={project.images[1]} 
+                                        className="w-full h-auto object-cover" 
+                                        alt="Process View" 
+                                        onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                    />
+                                </div>
+                            </FadeInSection>
+                        )
                     )}
                 </div>
             </section>
             
-            {project.fullText?.design ? (
-                <section className="py-32 md:py-48 bg-white relative z-10">
-                    <div className="container mx-auto px-6 max-w-[1600px]">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                            <div>
-                                <FadeInSection>
-                                    <h2 className="text-4xl md:text-6xl font-bold mb-8">Design</h2>
-                                    <p className="text-lg md:text-2xl text-gray-600 font-light leading-relaxed">
-                                        {project.fullText.design}
-                                    </p>
-                                </FadeInSection>
-                            </div>
-                            <div className="relative">
-                                <FadeInSection delay={200}>
-                                    <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
-                                        <img 
-                                            src={project.designImage || project.thumb} 
-                                            className="w-full h-auto object-cover" 
-                                            alt="Design Detail" 
-                                            onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
-                                        />
-                                    </div>
-                                </FadeInSection>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            ) : (
-                <section className="w-full h-[80vh] relative z-10">
-                    <img 
-                        src={project.thumb} 
-                        className="w-full h-full object-cover" 
-                        alt="Atmosphere" 
-                        onError={(e) => e.target.src='https://via.placeholder.com/1600x900'} 
-                    />
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+            {/* Design Section */}
+            {project.fullText?.design && (
+                <section className="py-16 md:py-24 bg-white relative z-10">
+                    <div className="max-w-6xl mx-auto px-6 md:px-10">
                         <FadeInSection>
-                            <h2 className="text-white text-5xl md:text-9xl font-bold tracking-tight mix-blend-overlay opacity-90">DESIGN</h2>
+                            <div className="max-w-prose space-y-6">
+                                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">Design</h2>
+                                <p className="text-base md:text-lg leading-relaxed text-gray-600">
+                                    {project.fullText.design}
+                                </p>
+                            </div>
                         </FadeInSection>
+                        {project.designImage && (
+                            <FadeInSection delay={200}>
+                                <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                    <img 
+                                        src={project.designImage} 
+                                        className="w-full h-auto object-cover" 
+                                        alt="Design Detail" 
+                                        onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                    />
+                                </div>
+                            </FadeInSection>
+                        )}
                     </div>
                 </section>
             )}
 
-            <section className="py-32 md:py-48 bg-white relative z-10">
-                <div className="container mx-auto px-6 max-w-[1600px]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-                        <div className="flex flex-col justify-center">
-                            <FadeInSection>
-                                <h3 className="text-3xl font-bold mb-4">The Result</h3>
-                                <p className="text-xl text-gray-600 font-light leading-relaxed">{project.fullText?.result || project.description}</p>
-                            </FadeInSection>
+            {/* The Result Section */}
+            <section className="py-16 md:py-24 bg-white relative z-10">
+                <div className="max-w-6xl mx-auto px-6 md:px-10">
+                    <FadeInSection>
+                        <div className="max-w-prose space-y-6">
+                            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">The Result</h2>
+                            <p className="text-base md:text-lg leading-relaxed text-gray-600">
+                                {project.fullText?.result || project.description}
+                            </p>
                         </div>
+                    </FadeInSection>
+                    {(project.resultImage || (project.images && project.images[2])) && (
                         <FadeInSection delay={200}>
-                            <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                            <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                 <img 
-                                    src={project.resultImage || (project.images && project.images[2]) || project.thumb} 
+                                    src={project.resultImage || project.images[2]} 
                                     className="w-full h-auto object-cover" 
                                     alt="Final Product" 
                                     onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
                                 />
                             </div>
                         </FadeInSection>
-                     </div>
+                    )}
                 </div>
             </section>
         </div>
