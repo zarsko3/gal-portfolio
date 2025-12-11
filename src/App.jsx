@@ -39,8 +39,8 @@ const PROJECTS = [
     title: 'YURBU',
     category: 'Consumer Electronics',
     year: '2023',
-    thumb: '18.PNG',
-    heroImage: '18.PNG',
+    thumb: '18.png',
+    heroImage: '18.png',
     description: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     quote: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     fullText: {
@@ -57,7 +57,8 @@ const PROJECTS = [
       { src: '19.HEIC', caption: '' },
       { src: '20.HEIC', caption: '' },
       { src: '23.png', caption: '' },
-      { src: '24.png', caption: '' }
+      { src: '24.png', caption: '' },
+      { src: '25.png', caption: '' }
     ],
     designImages: [
       { src: '14.PNG', caption: '' },
@@ -580,24 +581,67 @@ const ProjectDetail = ({ project, onBack }) => {
                     </FadeInSection>
                     {project.processImages && project.processImages.length > 0 ? (
                         <FadeInSection delay={200}>
-                            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                                {project.processImages.map((item, index) => (
-                                    <div key={index} className="flex flex-col">
-                                        <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                            <div className="mt-8 space-y-6 md:space-y-8">
+                                {/* First row: 2 images side by side */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                                    {project.processImages.slice(0, 2).map((item, index) => (
+                                        <div key={index} className="flex flex-col">
+                                            <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
+                                                <img 
+                                                    className="w-full h-auto object-cover" 
+                                                    alt={item.caption || 'Process View'} 
+                                                    src={item.src}
+                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                />
+                                            </div>
+                                            {item.caption && (
+                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                    {item.caption}
+                                                </p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                {/* Second row: 2 images side by side */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                                    {project.processImages.slice(2, 4).map((item, index) => (
+                                        <div key={index + 2} className="flex flex-col">
+                                            <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
+                                                <img 
+                                                    className="w-full h-auto object-cover" 
+                                                    alt={item.caption || 'Process View'} 
+                                                    src={item.src}
+                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                />
+                                            </div>
+                                            {item.caption && (
+                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                    {item.caption}
+                                                </p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                {/* Third row: Last image spans full width */}
+                                {project.processImages.length > 4 && (
+                                    <div className="flex flex-col">
+                                        <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden max-w-4xl mx-auto w-full">
                                             <img 
                                                 className="w-full h-auto object-cover" 
-                                                alt={item.caption || 'Process View'} 
-                                                src={item.src}
+                                                alt={project.processImages[4].caption || 'Process View'} 
+                                                src={project.processImages[4].src}
                                                 onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
                                             />
                                         </div>
-                                        {item.caption && (
+                                        {project.processImages[4].caption && (
                                             <p className="text-sm text-gray-600 font-light italic text-center mt-4">
-                                                {item.caption}
+                                                {project.processImages[4].caption}
                                             </p>
                                         )}
                                     </div>
-                                ))}
+                                )}
                             </div>
                         </FadeInSection>
                     ) : (
