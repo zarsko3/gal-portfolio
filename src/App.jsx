@@ -39,7 +39,8 @@ const PROJECTS = [
     title: 'YURBU',
     category: 'Consumer Electronics',
     year: '2023',
-    thumb: 'image_a2612f.png',
+    thumb: '18.PNG',
+    heroImage: '18.PNG',
     description: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     quote: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     fullText: {
@@ -48,6 +49,24 @@ const PROJECTS = [
       design: 'A minimal, premium appliance language that fits naturally in a modern kitchen, paired with an experience that remembers the user and removes unnecessary steps while keeping interaction clear and familiar.',
       result: 'A cohesive hardware and UI concept: a coffee machine that does not just make coffee, it gets better at making your coffee.'
     },
+    challengeImages: [
+      { src: '21.png', caption: '' },
+      { src: '22.png', caption: '' }
+    ],
+    processImages: [
+      { src: '19.HEIC', caption: '' },
+      { src: '20.HEIC', caption: '' },
+      { src: '23.png', caption: '' },
+      { src: '24.png', caption: '' }
+    ],
+    designImages: [
+      { src: '14.PNG', caption: '' },
+      { src: '15.PNG', caption: '' }
+    ],
+    resultImages: [
+      { src: 'placeholder-outcome-1.png', caption: '' },
+      { src: 'placeholder-outcome-2.png', caption: '' }
+    ],
     images: [
       'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1520978385391-8226451e506d?q=80&w=2000&auto=format&fit=crop',
@@ -499,7 +518,29 @@ const ProjectDetail = ({ project, onBack }) => {
                             </p>
                         </div>
                     </FadeInSection>
-                    {project.challengeImage && (
+                    {project.challengeImages && project.challengeImages.length > 0 ? (
+                        <FadeInSection delay={200}>
+                            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                                {project.challengeImages.map((item, index) => (
+                                    <div key={index} className="flex flex-col">
+                                        <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                            <img 
+                                                className="w-full h-auto object-cover" 
+                                                alt={item.caption || 'Challenge View'} 
+                                                src={item.src}
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                            />
+                                        </div>
+                                        {item.caption && (
+                                            <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                {item.caption}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </FadeInSection>
+                    ) : project.challengeImage && (
                         <FadeInSection delay={200}>
                             <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                 <img 
@@ -511,7 +552,7 @@ const ProjectDetail = ({ project, onBack }) => {
                             </div>
                         </FadeInSection>
                     )}
-                    {project.images && project.images[0] && !project.challengeImage && (
+                    {project.images && project.images[0] && !project.challengeImage && !project.challengeImages && (
                         <FadeInSection delay={200}>
                             <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                 <img 
@@ -539,14 +580,15 @@ const ProjectDetail = ({ project, onBack }) => {
                     </FadeInSection>
                     {project.processImages && project.processImages.length > 0 ? (
                         <FadeInSection delay={200}>
-                            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                                 {project.processImages.map((item, index) => (
                                     <div key={index} className="flex flex-col">
-                                        <div className="bg-white p-6 md:p-8 rounded-sm shadow-sm aspect-square overflow-hidden w-full">
+                                        <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                             <img 
-                                                className="w-full h-full object-cover" 
-                                                alt={item.caption} 
+                                                className="w-full h-auto object-cover" 
+                                                alt={item.caption || 'Process View'} 
                                                 src={item.src}
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
                                             />
                                         </div>
                                         {item.caption && (
@@ -587,7 +629,29 @@ const ProjectDetail = ({ project, onBack }) => {
                                 </p>
                             </div>
                         </FadeInSection>
-                        {project.designImage && (
+                        {project.designImages && project.designImages.length > 0 ? (
+                            <FadeInSection delay={200}>
+                                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                                    {project.designImages.map((item, index) => (
+                                        <div key={index} className="flex flex-col">
+                                            <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                                <img 
+                                                    className="w-full h-auto object-cover" 
+                                                    alt={item.caption || 'Design Detail'} 
+                                                    src={item.src}
+                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                />
+                                            </div>
+                                            {item.caption && (
+                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                    {item.caption}
+                                                </p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </FadeInSection>
+                        ) : project.designImage && (
                             <FadeInSection delay={200}>
                                 <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                     <img 
@@ -614,7 +678,29 @@ const ProjectDetail = ({ project, onBack }) => {
                             </p>
                         </div>
                     </FadeInSection>
-                    {(project.resultImage || (project.images && project.images[2])) && (
+                    {project.resultImages && project.resultImages.length > 0 ? (
+                        <FadeInSection delay={200}>
+                            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                                {project.resultImages.map((item, index) => (
+                                    <div key={index} className="flex flex-col">
+                                        <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
+                                            <img 
+                                                className="w-full h-auto object-cover" 
+                                                alt={item.caption || 'Final Product'} 
+                                                src={item.src}
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
+                                            />
+                                        </div>
+                                        {item.caption && (
+                                            <p className="text-sm text-gray-600 font-light italic text-center mt-4">
+                                                {item.caption}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </FadeInSection>
+                    ) : (project.resultImage || (project.images && project.images[2])) && (
                         <FadeInSection delay={200}>
                             <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                 <img 
