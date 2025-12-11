@@ -39,8 +39,8 @@ const PROJECTS = [
     title: 'YURBU',
     category: 'Consumer Electronics',
     year: '2023',
-    thumb: '18.png',
-    heroImage: '18.png',
+    thumb: '18.PNG',
+    heroImage: '18.PNG',
     description: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     quote: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     fullText: {
