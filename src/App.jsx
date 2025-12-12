@@ -20,11 +20,6 @@ const PROJECTS = [
       result: 'A modern take on a classic ritual object. Simple, premium, and satisfying to use. The final presentation continues the same philosophy with a minimal, elegant package that protects the product and feels intentional from the first moment you open it.'
     },
     challengeImage: '13.jpg',
-    challengeImages: [
-      { src: '2.png', caption: '' },
-      { src: '9.png', caption: '' },
-      { src: '10.png', caption: '' }
-    ],
     processImages: [
       { src: '2.png', caption: 'Early sketch studies. Form and proportions.' },
       { src: '9.png', caption: 'Prototype iterations. Testing usability and scale.' },
