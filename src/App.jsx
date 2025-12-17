@@ -461,7 +461,7 @@ const ProjectsPage = ({ onNavigate }) => {
 };
 
 // 4. UNIFIED PROJECT DETAIL
-const ProjectDetail = ({ project, onBack }) => {
+const ProjectDetail = ({ project, onBack, onNext }) => {
     if (!project) return null;
     
     return (
@@ -469,9 +469,6 @@ const ProjectDetail = ({ project, onBack }) => {
             {/* Split Screen Hero - Responsive Order */}
             <div className="flex flex-col md:flex-row h-auto md:h-[90vh] relative z-10">
                 <div className="w-full md:w-1/2 bg-[#F3F3F3] p-8 md:p-16 lg:p-24 flex flex-col justify-center relative">
-                    <button onClick={onBack} className="absolute top-8 left-8 md:top-12 md:left-12 flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors">
-                        <ChevronLeft size={16} /> Back
-                     </button>
                     
                     <FadeInSection>
                         <div className="max-w-xl mt-12 md:mt-0">
@@ -753,6 +750,26 @@ const ProjectDetail = ({ project, onBack }) => {
                     )}
                 </div>
             </section>
+            
+            {/* Navigation Buttons at Bottom */}
+            <div className="py-16 md:py-24 bg-white relative z-10">
+                <div className="max-w-6xl mx-auto px-6 md:px-10 flex justify-between items-center">
+                    <button 
+                        onClick={onBack} 
+                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-black hover:text-gray-500 transition-colors"
+                    >
+                        <ChevronLeft size={16} /> Back
+                    </button>
+                    {onNext && (
+                        <button 
+                            onClick={onNext} 
+                            className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-black hover:text-gray-500 transition-colors"
+                        >
+                            Next Work <ChevronRight size={16} />
+                        </button>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
@@ -879,6 +896,14 @@ export default function App() {
     setIsMenuOpen(false);
     // Scroll to top when navigating
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToNextProject = () => {
+    if (!selectedProject) return;
+    const currentIndex = PROJECTS.findIndex(p => p.id === selectedProject.id);
+    const nextIndex = (currentIndex + 1) % PROJECTS.length;
+    const nextProject = PROJECTS[nextIndex];
+    navigateTo('detail', nextProject);
   };
 
   if (isMobile) {
@@ -1009,7 +1034,11 @@ export default function App() {
         {currentView === 'contact' && <ContactPage />}
         
         {currentView === 'detail' && selectedProject && (
-             <ProjectDetail project={selectedProject} onBack={() => navigateTo('projects')} />
+             <ProjectDetail 
+                project={selectedProject} 
+                onBack={() => navigateTo('projects')} 
+                onNext={navigateToNextProject}
+             />
         )}
       </main>
     </div>
