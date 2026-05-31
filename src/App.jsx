@@ -9,8 +9,8 @@ const PROJECTS = [
     subtitle: 'Hanukkiah',
     category: 'Product Design',
     year: '2024',
-    thumb: '7.png',
-    heroImage: '6.png',
+    thumb: '7.webp',
+    heroImage: '6.webp',
     description: 'A minimalist Hanukkiah crafted for precision, simplicity, and longevity.',
     quote: 'A minimalist Hanukkiah crafted for precision, simplicity, and longevity.',
     fullText: {
@@ -19,14 +19,14 @@ const PROJECTS = [
       design: 'LINE•8 is intentionally minimal. Clean surfaces, sharp geometry, and calm proportions let the object speak without decoration. Aluminum was chosen for precision, durability, and a refined feel. The finish is oven-cured powder coating for a clean, resilient surface. Multiple color options are offered while preserving the same iconic form.',
       result: 'A modern take on a classic ritual object. Simple, premium, and satisfying to use. The final presentation continues the same philosophy with a minimal, elegant package that protects the product and feels intentional from the first moment you open it.'
     },
-    challengeImage: '13.jpg',
+    challengeImage: '13.webp',
     processImages: [
-      { src: '2.png', caption: 'Early sketch studies. Form and proportions.' },
-      { src: '9.png', caption: 'Prototype iterations. Testing usability and scale.' },
-      { src: '10.png', caption: 'Packaging exploration. Minimal, protective, gift-ready.' }
+      { src: '2.webp', caption: 'Early sketch studies. Form and proportions.' },
+      { src: '9.webp', caption: 'Prototype iterations. Testing usability and scale.' },
+      { src: '10.webp', caption: 'Packaging exploration. Minimal, protective, gift-ready.' }
     ],
-    designImage: '4.png',
-    resultImage: '8.png',
+    designImage: '4.webp',
+    resultImage: '8.webp',
     isCustom: true
   },
   {
@@ -34,8 +34,8 @@ const PROJECTS = [
     title: 'YURBU',
     category: 'Consumer Electronics',
     year: '2023',
-    thumb: '18.png',
-    heroImage: '18.png',
+    thumb: '18.webp',
+    heroImage: '18.webp',
     description: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     quote: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
     fullText: {
@@ -45,19 +45,19 @@ const PROJECTS = [
       result: 'A cohesive hardware and UI concept: a coffee machine that does not just make coffee, it gets better at making your coffee.'
     },
     challengeImages: [
-      { src: '21.png', caption: '' },
-      { src: '22.png', caption: '' }
+      { src: '21.webp', caption: '' },
+      { src: '22.webp', caption: '' }
     ],
     processImages: [
       { src: '19.HEIC', caption: '' },
       { src: '20.HEIC', caption: '' },
-      { src: '23.png', caption: '' },
-      { src: '24.png', caption: '' },
-      { src: '25.png', caption: '' }
+      { src: '23.webp', caption: '' },
+      { src: '24.webp', caption: '' },
+      { src: '25.webp', caption: '' }
     ],
     designImages: [
-      { src: '14.PNG', caption: '' },
-      { src: '15.PNG', caption: '' }
+      { src: '14.webp', caption: '' },
+      { src: '15.webp', caption: '' }
     ],
     resultImages: [
       { src: 'placeholder-outcome-1.png', caption: '' },
@@ -74,7 +74,7 @@ const PROJECTS = [
     title: 'HEZUS',
     category: 'Marine Design',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=2000&auto=format&fit=crop',
+    thumb: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=75&w=800&auto=format&fit=crop',
     description: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
     quote: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
     fullText: {
@@ -94,7 +94,7 @@ const PROJECTS = [
     title: 'TESTODO',
     category: 'Tech Accessories',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1592434134753-a70baf7979d5?q=80&w=2000&auto=format&fit=crop',
+    thumb: 'https://images.unsplash.com/photo-1592434134753-a70baf7979d5?q=75&w=800&auto=format&fit=crop',
     description: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
     quote: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
     fullText: {
@@ -114,7 +114,7 @@ const PROJECTS = [
     title: 'GREEN BRUSH',
     category: 'Sustainability',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop',
+    thumb: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=75&w=800&auto=format&fit=crop',
     description: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
     quote: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
     fullText: {
@@ -134,7 +134,7 @@ const PROJECTS = [
     title: 'STRIKECOSENSE',
     category: 'Sports Tech',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=2000&auto=format&fit=crop',
+    thumb: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=75&w=800&auto=format&fit=crop',
     description: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
     quote: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
     fullText: {
@@ -258,15 +258,18 @@ const AboutPage = () => {
             <div className="w-full lg:w-1/3 xl:w-1/4">
         <FadeInSection>
                     <div className="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative shadow-lg group">
-                        <img 
-                            src="Gal b&w.jpg" 
+                        <img
+                            src="Gal-bw.webp"
                             className="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-100 group-hover:opacity-0"
                             alt="Gal Zarski B&W"
+                            decoding="async"
                         />
-                        <img 
-                            src="Gal.jpg" 
+                        <img
+                            src="Gal.webp"
                             className="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
                             alt="Gal Zarski Color"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
                 </FadeInSection>
@@ -396,7 +399,9 @@ const ProjectsPage = ({ onNavigate }) => {
                                             alt={project.title}
                                             className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                                             style={{objectPosition: 'center center'}}
-                                            onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop'}}
+                                            loading={index === 0 ? 'eager' : 'lazy'}
+                                            decoding="async"
+                                            onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop'}}
                                         />
                                         {/* Hover overlay */}
                                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-end p-4">
@@ -494,11 +499,13 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                 {project.challengeImages.map((item, index) => (
                                     <div key={index} className="flex flex-col">
                                         <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
-                                            <img 
-                                                className="w-full h-auto object-cover" 
-                                                alt={item.caption || 'Challenge View'} 
+                                            <img
+                                                className="w-full h-auto object-cover"
+                                                alt={item.caption || 'Challenge View'}
                                                 src={item.src}
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                loading="lazy"
+                                                decoding="async"
+                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
                                             />
                                         </div>
                                         {item.caption && (
@@ -513,11 +520,13 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                     ) : project.challengeImage && (
                         <FadeInSection delay={200}>
                             <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
-                                <img 
-                                    src={project.challengeImage} 
-                                    className="w-full h-auto object-cover" 
-                                    alt="Challenge View" 
-                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                <img
+                                    src={project.challengeImage}
+                                    className="w-full h-auto object-cover"
+                                    alt="Challenge View"
+                                    loading="lazy"
+                                    decoding="async"
+                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
                                 />
                             </div>
                         </FadeInSection>
@@ -556,11 +565,13 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                     {project.processImages.slice(0, 2).map((item, index) => (
                                         <div key={index} className="flex flex-col">
                                             <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
-                                                <img 
-                                                    className="w-full h-auto object-cover" 
-                                                    alt={item.caption || 'Process View'} 
+                                                <img
+                                                    className="w-full h-auto object-cover"
+                                                    alt={item.caption || 'Process View'}
                                                     src={item.src}
-                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
                                                 />
                                             </div>
                                             {item.caption && (
@@ -577,11 +588,13 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                     {project.processImages.slice(2, 4).map((item, index) => (
                                         <div key={index + 2} className="flex flex-col">
                                             <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
-                                                <img 
-                                                    className="w-full h-auto object-cover" 
-                                                    alt={item.caption || 'Process View'} 
+                                                <img
+                                                    className="w-full h-auto object-cover"
+                                                    alt={item.caption || 'Process View'}
                                                     src={item.src}
-                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
                                                 />
                                             </div>
                                             {item.caption && (
@@ -648,11 +661,13 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                     {project.designImages.map((item, index) => (
                                         <div key={index} className="flex flex-col">
                                             <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
-                                                <img 
-                                                    className="w-full h-auto object-cover" 
-                                                    alt={item.caption || 'Design Detail'} 
+                                                <img
+                                                    className="w-full h-auto object-cover"
+                                                    alt={item.caption || 'Design Detail'}
                                                     src={item.src}
-                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
                                                 />
                                             </div>
                                             {item.caption && (
@@ -716,11 +731,13 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                     ) : (project.resultImage || (project.images && project.images[2])) && (
                         <FadeInSection delay={200}>
                             <div className="mt-8 bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
-                                <img 
-                                    src={project.resultImage || project.images[2]} 
-                                    className="w-full h-auto object-cover" 
-                                    alt="Final Product" 
-                                    onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
+                                <img
+                                    src={project.resultImage || project.images[2]}
+                                    className="w-full h-auto object-cover"
+                                    alt="Final Product"
+                                    loading="lazy"
+                                    decoding="async"
+                                    onError={(e) => e.target.src='https://via.placeholder.com/800x600'}
                                 />
                             </div>
                         </FadeInSection>
