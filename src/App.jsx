@@ -321,13 +321,11 @@ const AboutPage = () => {
                                 <li className="flex items-center gap-3"><Box size={18} className="flex-shrink-0" /> SolidWorks</li>
                                 <li className="flex items-center gap-3"><Monitor size={18} className="flex-shrink-0" /> KeyShot</li>
                                 <li className="flex items-center gap-3"><PenTool size={18} className="flex-shrink-0" /> Figma</li>
-                                <li className="flex items-center gap-3"><Camera size={18} className="flex-shrink-0" /> Photoshop</li>
+                                <li className="flex items-center gap-3"><Layers size={18} className="flex-shrink-0" /> Adobe Suite</li>
                             </ul>
                             <ul className="space-y-3">
                                 <li className="flex items-center gap-3"><Box size={18} className="flex-shrink-0" /> 3D Printing</li>
-                                <li className="flex items-center gap-3"><Layers size={18} className="flex-shrink-0" /> InDesign</li>
-                                <li className="flex items-center gap-3"><Video size={18} className="flex-shrink-0" /> Premiere Pro</li>
-                                <li className="flex items-center gap-3"><Sparkles size={18} className="flex-shrink-0" /> AI Tools</li>
+                                <li className="flex items-center gap-3"><Sparkles size={18} className="flex-shrink-0" /> AI Expert</li>
                             </ul>
                         </div>
                     </div>
@@ -338,6 +336,30 @@ const AboutPage = () => {
                 <FadeInSection delay={500}>
                     <h3 className="text-2xl md:text-3xl font-bold mb-10 uppercase tracking-tight">Work Experience</h3>
                     <div className="space-y-16">
+                        <div className="group">
+                            <span className="text-sm font-mono text-gray-500 mb-2 block">2026 — Present</span>
+                            <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Jenovice</h4>
+                            <p className="text-base text-gray-500 font-medium mt-1">Head of Product</p>
+                            <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
+                                Leading product strategy and execution, bridging industrial design with product vision to ship meaningful, market-ready solutions.
+                            </p>
+                        </div>
+                        <div className="group">
+                            <span className="text-sm font-mono text-gray-500 mb-2 block">2024 — 2025</span>
+                            <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Jenovice</h4>
+                            <p className="text-base text-gray-500 font-medium mt-1">Head of Design</p>
+                            <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
+                                Led the design team end-to-end, defining the visual language and overseeing product design from concept through production.
+                            </p>
+                        </div>
+                        <div className="group">
+                            <span className="text-sm font-mono text-gray-500 mb-2 block">2023 — 2024</span>
+                            <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Jenovice</h4>
+                            <p className="text-base text-gray-500 font-medium mt-1">Senior Industrial Designer</p>
+                            <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
+                                Drove industrial design projects from brief to final form, collaborating closely with engineering and manufacturing teams.
+                            </p>
+                        </div>
                         <div className="group">
                             <span className="text-sm font-mono text-gray-500 mb-2 block">2020 — 2023</span>
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Kaufman R&D</h4>
