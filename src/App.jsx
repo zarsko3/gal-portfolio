@@ -341,7 +341,7 @@ const AboutPage = () => {
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Jenovice</h4>
                             <p className="text-base text-gray-500 font-medium mt-1">Head of Product</p>
                             <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
-                                Leading product strategy and execution, bridging industrial design with product vision to ship meaningful, market-ready solutions.
+                                Full ownership of product at a cybersecurity startup — responsible for all design, engineering planning, manufacturing, and product strategy. Also oversees the overall look and feel of the product at the UI/UX level, ensuring a coherent experience from hardware to interface.
                             </p>
                         </div>
                         <div className="group">
@@ -349,7 +349,7 @@ const AboutPage = () => {
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Jenovice</h4>
                             <p className="text-base text-gray-500 font-medium mt-1">Head of Design</p>
                             <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
-                                Led the design team end-to-end, defining the visual language and overseeing product design from concept through production.
+                                Led all design efforts at a cybersecurity startup, shaping the visual identity and product language across industrial design and UI/UX. Responsible for the overall appearance and user-facing experience of the product, from physical form to digital interface.
                             </p>
                         </div>
                         <div className="group">
@@ -357,7 +357,7 @@ const AboutPage = () => {
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Jenovice</h4>
                             <p className="text-base text-gray-500 font-medium mt-1">Senior Industrial Designer</p>
                             <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
-                                Drove industrial design projects from brief to final form, collaborating closely with engineering and manufacturing teams.
+                                Joined a cybersecurity startup as senior industrial designer, taking ownership of product design, manufacturing planning, and production processes. Worked end-to-end from initial concept through final manufacturing, collaborating with engineering to bring precise, functional products to life.
                             </p>
                         </div>
                         <div className="group">
@@ -407,43 +407,53 @@ const ProjectsPage = ({ onNavigate }) => {
                     const positionInCycle = index % 6;
                     const shouldSpanTwo = positionInCycle >= 4;
 
+                    const isAvailable = index < 2;
+
                     return (
                        <FadeInSection key={project.id} delay={index * 60}>
                             <div
-                                className={`group cursor-pointer ${shouldSpanTwo ? 'sm:col-span-2' : ''}`}
-                                onClick={() => onNavigate('detail', project)}
+                                className={`group ${isAvailable ? 'cursor-pointer' : 'cursor-default'} ${shouldSpanTwo ? 'sm:col-span-2' : ''}`}
+                                onClick={() => isAvailable && onNavigate('detail', project)}
                             >
                                 <div className="flex flex-col h-full">
-                                    {/* Image with overlay arrow on hover */}
+                                    {/* Image */}
                                     <div className="aspect-[3/4] bg-gray-100 overflow-hidden relative mb-5 rounded-sm">
                                         <img
                                             src={project.thumb}
                                             alt={project.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                                            className={`w-full h-full object-cover transition-transform duration-500 ease-out ${isAvailable ? 'group-hover:scale-[1.03]' : 'opacity-40 grayscale'}`}
                                             style={{objectPosition: 'center center'}}
                                             loading={index === 0 ? 'eager' : 'lazy'}
                                             decoding="async"
                                             onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop'}}
                                         />
-                                        {/* Hover overlay */}
-                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-end p-4">
-                                            <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                                                <ArrowUpRight size={16} className="text-white" />
+                                        {/* Hover overlay for available projects */}
+                                        {isAvailable ? (
+                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-end p-4">
+                                                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                                                    <ArrowUpRight size={16} className="text-white" />
+                                                </div>
                                             </div>
-                                        </div>
+                                        ) : (
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-white/90 px-3 py-1.5 rounded-sm">
+                                                    Coming Soon
+                                                </span>
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Text */}
                                     <div className="flex items-start justify-between mb-2">
-                                        <h2 className="text-base md:text-lg font-semibold tracking-tight text-black leading-tight">
+                                        <h2 className={`text-base md:text-lg font-semibold tracking-tight leading-tight ${isAvailable ? 'text-black' : 'text-gray-400'}`}>
                                             {project.title}
                                         </h2>
                                         <span className="text-xs font-mono text-gray-400 ml-3 mt-0.5 flex-shrink-0">{project.year}</span>
                                     </div>
-                                    <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-gray-200 px-2 py-0.5 rounded-sm mb-3">
+                                    <span className={`inline-block text-[10px] font-bold uppercase tracking-widest border px-2 py-0.5 rounded-sm mb-3 ${isAvailable ? 'text-gray-500 border-gray-200' : 'text-gray-300 border-gray-100'}`}>
                                         {project.category}
                                     </span>
-                                    <p className="text-sm text-gray-500 font-light leading-relaxed line-clamp-2">
+                                    <p className={`text-sm font-light leading-relaxed line-clamp-2 ${isAvailable ? 'text-gray-500' : 'text-gray-300'}`}>
                                         {project.description}
                                     </p>
 
