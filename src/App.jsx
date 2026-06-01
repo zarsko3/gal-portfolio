@@ -934,7 +934,7 @@ export default function App() {
           navbarVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="w-full px-6 md:px-12 lg:px-20 flex justify-between items-center">
+        <div className="w-full px-6 md:px-12 lg:px-20 flex justify-between items-center relative">
           {/* Logo / Home button */}
           <button
             onClick={() => navigateTo('home')}
@@ -950,7 +950,7 @@ export default function App() {
           </button>
 
           {/* Centered Navigation */}
-          <div className="hidden md:flex space-x-12 text-xs font-bold tracking-[0.2em] uppercase">
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 space-x-12 text-xs font-bold tracking-[0.2em] uppercase">
             <button
               onClick={() => navigateTo('about')}
               className={`relative pb-1 transition-all duration-300 ${
