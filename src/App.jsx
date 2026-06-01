@@ -74,7 +74,7 @@ const PROJECTS = [
     title: 'HEZUS',
     category: 'Marine Design',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=75&w=800&auto=format&fit=crop',
+    thumb: 'hezus-thumb.webp',
     description: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
     quote: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
     fullText: {
@@ -94,7 +94,7 @@ const PROJECTS = [
     title: 'TESTODO',
     category: 'Tech Accessories',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1592434134753-a70baf7979d5?q=75&w=800&auto=format&fit=crop',
+    thumb: 'testodo-thumb.webp',
     description: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
     quote: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
     fullText: {
@@ -114,7 +114,7 @@ const PROJECTS = [
     title: 'GREEN BRUSH',
     category: 'Sustainability',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=75&w=800&auto=format&fit=crop',
+    thumb: 'green-brush-thumb.webp',
     description: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
     quote: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
     fullText: {
@@ -134,7 +134,7 @@ const PROJECTS = [
     title: 'STRIKECOSENSE',
     category: 'Sports Tech',
     year: '2023',
-    thumb: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=75&w=800&auto=format&fit=crop',
+    thumb: 'Strikco-thumb.webp',
     description: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
     quote: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
     fullText: {
