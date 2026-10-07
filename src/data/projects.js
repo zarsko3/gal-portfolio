@@ -122,7 +122,7 @@ export const PROJECTS = [
     thumb: 'Strikco-thumb.webp',
     heroImage: 'strikeco-hero.webp',
     heroFit: 'contain',
-    heroBg: '#dddddd',
+    heroBg: '#F3F3F3',
     film: {
       src: 'strikeco-film.mp4',
       mobileSrc: 'strikeco-film-mobile.mp4',

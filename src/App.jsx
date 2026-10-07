@@ -537,7 +537,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                 <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2 block">{project.subtitle}</span>
                             )}
                             {/* Responsive Text Size */}
-                            <h1 className="text-6xl md:text-8xl xl:text-9xl font-black tracking-tighter mb-8 leading-[0.9]">
+                            <h1 className={`${project.title.length > 7 ? 'text-6xl md:text-7xl xl:text-8xl' : 'text-6xl md:text-8xl xl:text-9xl'} font-black tracking-tighter mb-8 leading-[0.9]`}>
                                 {project.title}
                             </h1>
                             <div className="w-16 h-1 bg-black mb-10"></div>
