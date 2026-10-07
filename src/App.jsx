@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, PenTool, ArrowUpRight, Monitor, Box, Layers, Sparkles, Focus, LayoutGrid, List, Smartphone, Cpu } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, PenTool, ArrowUpRight, Monitor, Box, Layers, Sparkles, Focus, LayoutGrid, List, Smartphone, Cpu, ImageIcon } from 'lucide-react';
 
 import { PROJECTS, DISCIPLINES } from './data/projects';
 
@@ -8,6 +8,49 @@ import { PROJECTS, DISCIPLINES } from './data/projects';
 // Hide broken images instead of swapping in a fallback URL (which loops forever if the fallback also fails).
 const hideOnError = (e) => { e.currentTarget.style.display = 'none'; };
 const hideFrameOnError = (e) => { e.currentTarget.parentElement.style.display = 'none'; };
+
+// Reserved slot for an image that hasn't been supplied yet (item without src).
+const isMobileViewport = () => window.matchMedia('(max-width: 767px)').matches;
+
+const ImagePlaceholder = () => (
+    <div className="w-full aspect-[4/3] bg-gray-100 flex items-center justify-center">
+        <ImageIcon size={28} strokeWidth={1.25} className="text-gray-300" />
+    </div>
+);
+
+// Soft studio backdrop with a perspective court floor, for renders exported with a transparent background.
+const CourtBackdrop = () => (
+    <svg viewBox="0 0 1920 1200" preserveAspectRatio="none" className="absolute inset-0 w-full h-full" aria-hidden="true">
+        <g fill="none" stroke="rgba(15, 23, 42, 0.09)" strokeWidth="3" strokeLinecap="round">
+            <path d="M240 1130H1680M240 1130L640 820M1680 1130L1280 820M640 820H1280" />
+            <path d="M470 1130L742 820M1450 1130L1178 820M620 960H1300M960 960V820M960 1130V1112" />
+        </g>
+    </svg>
+);
+
+const ProcessMedia = ({ item }) => {
+    if (!item.src) return <ImagePlaceholder />;
+    const img = (
+        <img
+            className="w-full h-auto object-cover relative"
+            alt={item.caption || 'Process View'}
+            src={item.src}
+            loading="lazy"
+            decoding="async"
+            onError={hideFrameOnError}
+        />
+    );
+    if (!item.transparent) return img;
+    return (
+        <div
+            className="relative overflow-hidden"
+            style={{ background: 'radial-gradient(ellipse 60% 70% at 50% 55%, #fcfcfd 0%, #e6e8ec 100%)' }}
+        >
+            <CourtBackdrop />
+            {img}
+        </div>
+    );
+};
 
 const FadeInSection = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -507,16 +550,36 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                     </FadeInSection>
                 </div>
 
-                <div className="w-full md:w-1/2 h-[50vh] md:h-auto bg-gray-200 relative overflow-hidden flex items-center justify-center">
+                <div
+                    className="w-full md:w-1/2 h-[50vh] md:h-auto bg-gray-200 relative overflow-hidden flex items-center justify-center"
+                    style={project.heroBg ? { background: project.heroBg } : undefined}
+                >
                     <img 
                         src={project.heroImage || project.thumb} 
-                        className="absolute inset-0 w-full h-full object-cover" 
+                        className={`absolute inset-0 w-full h-full ${project.heroFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
                         alt={project.title}
                         style={{objectPosition: 'center center'}}
                         onError={hideOnError}
                     />
                 </div>
             </div>
+
+            {/* Film: full-bleed muted loop */}
+            {project.film && (
+                <section className="relative z-10 bg-black">
+                    <video
+                        className="w-full block object-cover aspect-[13/15] md:aspect-[2/1]"
+                        src={isMobileViewport() && project.film.mobileSrc ? project.film.mobileSrc : project.film.src}
+                        poster={isMobileViewport() && project.film.mobilePoster ? project.film.mobilePoster : project.film.poster}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        aria-label={`${project.title} film`}
+                    />
+                </section>
+            )}
 
             {/* The Challenge Section */}
             <section className="py-16 md:py-24 bg-white relative z-10">
@@ -532,8 +595,11 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                     {project.challengeImages && project.challengeImages.length > 0 ? (
                         <FadeInSection delay={200}>
                             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                                {project.challengeImages.map((item, index) => (
-                                    <div key={index} className="flex flex-col">
+                                {project.challengeImages.map((item, index, all) => (
+                                    <div
+                                        key={index}
+                                        className={`flex flex-col ${all.length > 2 && all.length % 2 === 1 && index === all.length - 1 ? 'md:col-span-2' : ''}`}
+                                    >
                                         <div className="bg-gray-50 p-6 md:p-8 rounded-sm overflow-hidden">
                                             <img
                                                 className="w-full h-auto object-cover"
@@ -595,71 +661,22 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                     </FadeInSection>
                     {project.processImages && project.processImages.length > 0 ? (
                         <FadeInSection delay={200}>
-                            <div className="mt-8 space-y-6 md:space-y-8">
-                                {/* First row: 2 images side by side */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                                    {project.processImages.slice(0, 2).map((item, index) => (
-                                        <div key={index} className="flex flex-col">
-                                            <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
-                                                <img
-                                                    className="w-full h-auto object-cover"
-                                                    alt={item.caption || 'Process View'}
-                                                    src={item.src}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                    onError={hideFrameOnError}
-                                                />
-                                            </div>
-                                            {item.caption && (
-                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
-                                                    {item.caption}
-                                                </p>
-                                            )}
+                            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                                {project.processImages.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className={`flex flex-col ${item.full ? 'md:col-span-2 max-w-4xl mx-auto w-full' : ''}`}
+                                    >
+                                        <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
+                                            <ProcessMedia item={item} />
                                         </div>
-                                    ))}
-                                </div>
-                                
-                                {/* Second row: 2 images side by side */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                                    {project.processImages.slice(2, 4).map((item, index) => (
-                                        <div key={index + 2} className="flex flex-col">
-                                            <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden">
-                                                <img
-                                                    className="w-full h-auto object-cover"
-                                                    alt={item.caption || 'Process View'}
-                                                    src={item.src}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                    onError={hideFrameOnError}
-                                                />
-                                            </div>
-                                            {item.caption && (
-                                                <p className="text-sm text-gray-600 font-light italic text-center mt-4">
-                                                    {item.caption}
-                                                </p>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                                
-                                {/* Third row: Last image spans full width */}
-                                {project.processImages.length > 4 && (
-                                    <div className="flex flex-col">
-                                        <div className="bg-gray-50 p-4 md:p-6 rounded-sm overflow-hidden max-w-4xl mx-auto w-full">
-                                            <img 
-                                                className="w-full h-auto object-cover" 
-                                                alt={project.processImages[4].caption || 'Process View'} 
-                                                src={project.processImages[4].src}
-                                                onError={hideFrameOnError}
-                                            />
-                                        </div>
-                                        {project.processImages[4].caption && (
+                                        {item.caption && (
                                             <p className="text-sm text-gray-600 font-light italic text-center mt-4">
-                                                {project.processImages[4].caption}
+                                                {item.caption}
                                             </p>
                                         )}
                                     </div>
-                                )}
+                                ))}
                             </div>
                         </FadeInSection>
                     ) : (

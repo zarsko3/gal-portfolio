@@ -104,11 +104,65 @@ export const PROJECTS = [
       { src: '20.webp', caption: '' },
       { src: '23.webp', caption: '' },
       { src: '24.webp', caption: '' },
-      { src: '25.webp', caption: '' }
+      { src: '25.webp', caption: '', full: true }
     ],
     designImages: [
       { src: '14.webp', caption: '' },
       { src: '15.webp', caption: '' }
+    ],
+    available: true
+  },
+  {
+    id: 'strikeco',
+    title: 'STRIKECO',
+    subtitle: 'Home Tennis Simulator',
+    category: 'Sports Tech',
+    disciplines: ['industrial'],
+    year: '2023',
+    thumb: 'Strikco-thumb.webp',
+    heroImage: 'strikeco-hero.webp',
+    heroFit: 'contain',
+    heroBg: '#dddddd',
+    film: {
+      src: 'strikeco-film.mp4',
+      mobileSrc: 'strikeco-film-mobile.mp4',
+      poster: 'strikeco-film-poster.webp',
+      mobilePoster: 'strikeco-film-poster-mobile.webp'
+    },
+    description: 'STRIKECO is a home tennis simulator. Players hit a real ball with their own racquet while sensors read every shot and the game plays out on the TV.',
+    quote: 'Real tennis in the living room. A training device designed to earn its place at home.',
+    fullText: {
+      brief: 'Getting better at tennis takes repetition, and repetition needs a court, a partner, and time. Practicing alone usually means a basket of balls, a drill, and then collecting every ball again, so much of the session is spent walking instead of hitting. STRIKECO brings practice home: the player hits a real ball on a flexible arm with their own racquet, while sensors read power, spin, and direction and the session plays out on the TV. The design challenge was to create a sports device that absorbs a full swing day after day, sets up in minutes, and still looks like it belongs in a living room rather than a gym.',
+      process: 'The design began with the strike itself: where the ball needs to sit, how it moves after impact, and how the device stays planted under a full swing. Early sketches explored how to hold the ball: a column, an articulated arm, a wall mount, a tripod, and a leaning spine on a wedge base. Two directions were taken into 3D, an articulated arm and a single pedestal column, each checked against a full-size figure to set ball height and swing clearance. The sensor head was then developed with an integrated light bar as a status cue, and taken into physical prototypes: the housing, the light bar, and the head assembled with its flexible arm mechanism.',
+      design: 'The form is built from one gesture: an angled spine rising from a low triangular base, leaning away from the hitting zone while the base keeps the weight planted. A gooseneck arm carries the ball out at striking height, and the sensor cradle with its green status light sits where the arm meets the spine. A graduated scale along the spine makes height adjustment visible and repeatable. The finish is matte black throughout, with the tennis ball as the only accent color, so the device reads as calm furniture when idle and as equipment once play begins. Power and HDMI connections are gathered in a single rear panel to keep the front clean.',
+      result: 'STRIKECO moved from concept to a commercial product, now open for pre-order with shipping planned for Q4 2026. Setup takes about two minutes: place the device, connect it to the TV, and play. Real tennis practice at home, any time.'
+    },
+    challengeImages: [
+      { src: 'strikeco-challenge-drill.webp', caption: 'Solo practice today: a basket of balls, then collecting them all again. Photo: Kamara Rahmat / Unsplash' },
+      { src: 'strikeco-challenge-collect.webp', caption: 'Court time that is not spent hitting. Photo: Nathan B / Unsplash' },
+      { src: 'strikeco-home.webp', caption: 'The goal: real practice, in the room you already have.' }
+    ],
+    processImages: [
+      { src: 'strikeco-process-sketches.webp', caption: 'Concept sketches. Column, articulated arm, wall mount, tripod, and a leaning spine.', full: true },
+      { src: 'strikeco-process-arm.webp', caption: 'Early direction. An articulated arm presents the ball.', transparent: true },
+      { src: 'strikeco-process-arm-side.webp', caption: 'Arm concept at the strike position.', transparent: true },
+      { src: 'strikeco-process-arm-scale.webp', caption: 'Arm concept, checked against a player.', transparent: true },
+      { src: 'strikeco-process-pedestal-scale.webp', caption: 'Pedestal direction, at the same scale.', transparent: true },
+      { src: 'strikeco-process-head.webp', caption: 'Sensor head. The light bar as a status cue.', transparent: true, full: true },
+      { src: 'strikeco-process-pedestal.webp', caption: 'Pedestal study. A single column on a weighted base.', transparent: true },
+      { src: 'strikeco-process-pedestal-front.webp', caption: 'Front view. A minimal footprint.', transparent: true },
+      { src: 'strikeco-process-housing.webp', caption: 'First housing prototype.' },
+      { src: 'strikeco-process-lightbar.webp', caption: 'Light bar on the test rig.' },
+      { src: 'strikeco-process-assembly.webp', caption: 'Head and flexible arm, assembled.' },
+      { src: 'strikeco-process-mechanism.webp', caption: 'The flexible arm mechanism.' }
+    ],
+    designImages: [
+      { src: 'strikeco-studio.webp', caption: 'One angled spine on a low, weighted base.' },
+      { src: 'strikeco-detail.webp', caption: 'Ball arm and sensor cradle.' }
+    ],
+    resultImages: [
+      { src: 'strikeco-play.webp', caption: 'A real ball and your own racquet.' },
+      { src: 'strikeco-tv.webp', caption: 'Every shot read and played out on the TV.' }
     ],
     available: true
   },
@@ -158,22 +212,6 @@ export const PROJECTS = [
       process: 'The concept was developed around real maintenance flow. First, define how the capsule integrates into existing water transport and how a user installs it quickly and correctly. Then refine the form through iterations that balance durability, grip, and clear functional cues. Finally, validate the concept through physical-scale checks and visual development to ensure it reads as a robust, service-friendly product.',
       design: 'A clean, functional cylindrical form with a no-nonsense "tool" feel. The capsule is designed to work within the water system, and it can also connect to an external faucet to support external cleaning of the panels, keeping maintenance accessible and straightforward.',
       result: 'A simple product concept that supports long-term solar panel maintenance and helps keep panels working at their optimal capacity through cleaner water and easier cleaning routines.'
-    }
-  },
-  {
-    id: 'strikeco',
-    title: 'STRIKECOSENSE',
-    category: 'Sports Tech',
-    disciplines: ['industrial'],
-    year: '2023',
-    thumb: 'Strikco-thumb.webp',
-    description: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
-    quote: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
-    fullText: {
-      brief: 'Training can be repetitive without clear feedback or progression. STRIKECOSENSE was designed to serve both beginners and experienced players by combining a physical training device with a digital layer that makes practice more engaging, measurable, and skill-focused.',
-      process: 'The concept was developed as a full ecosystem rather than a standalone object. Form iterations focused on stability, interaction points, and a clear sports-tech identity. In parallel, the app and simulator experience was shaped to support a repeatable training loop that encourages improvement over time.',
-      design: 'A compact, approachable product language that communicates where and how to interact. The form is performance-forward but intentionally simple, keeping the user focused on training rather than setup.',
-      result: 'A cohesive training concept that combines hardware and software into a single experience, helping users practice more effectively and push their gameplay to the next level.'
     }
   }
 ];
