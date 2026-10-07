@@ -27,7 +27,8 @@ const PROJECTS = [
     ],
     designImage: '4.webp',
     resultImage: '8.webp',
-    isCustom: true
+    isCustom: true,
+    available: true
   },
   {
     id: 'yurbu',
@@ -49,8 +50,8 @@ const PROJECTS = [
       { src: '22.webp', caption: '' }
     ],
     processImages: [
-      { src: '19.HEIC', caption: '' },
-      { src: '20.HEIC', caption: '' },
+      { src: '19.webp', caption: '' },
+      { src: '20.webp', caption: '' },
       { src: '23.webp', caption: '' },
       { src: '24.webp', caption: '' },
       { src: '25.webp', caption: '' }
@@ -59,15 +60,7 @@ const PROJECTS = [
       { src: '14.webp', caption: '' },
       { src: '15.webp', caption: '' }
     ],
-    resultImages: [
-      { src: 'placeholder-outcome-1.png', caption: '' },
-      { src: 'placeholder-outcome-2.png', caption: '' }
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1520978385391-8226451e506d?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2000&auto=format&fit=crop'
-    ]
+    available: true
   },
   {
     id: 'hezus',
@@ -152,6 +145,10 @@ const PROJECTS = [
 ];
 
 /* --- UI COMPONENTS --- */
+
+// Hide broken images instead of swapping in a fallback URL (which loops forever if the fallback also fails).
+const hideOnError = (e) => { e.currentTarget.style.display = 'none'; };
+const hideFrameOnError = (e) => { e.currentTarget.parentElement.style.display = 'none'; };
 
 const FadeInSection = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -393,7 +390,7 @@ const AboutPage = () => {
 const ProjectsPage = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-transparent pt-24 sm:pt-28 md:pt-32 px-6 md:px-12 lg:px-20 pb-32 relative">
-        <div className="max-w-[1400px] laptop:max-w-[1200px] laptop-lg:max-w-[1400px] xl:max-w-[1600px] mx-auto relative z-10">
+        <div className="max-w-[1400px] laptop:max-w-[1200px] xl:max-w-[1600px] mx-auto relative z-10">
             <FadeInSection>
                 <div className="mb-12 md:mb-16 border-b border-gray-200 pb-6 md:pb-8">
                     <h1 className="text-4xl md:text-5xl laptop:text-6xl font-black tracking-tighter uppercase text-black mb-2">Work</h1>
@@ -407,7 +404,7 @@ const ProjectsPage = ({ onNavigate }) => {
                     const positionInCycle = index % 6;
                     const shouldSpanTwo = positionInCycle >= 4;
 
-                    const isAvailable = index < 2;
+                    const isAvailable = !!project.available;
 
                     return (
                        <FadeInSection key={project.id} delay={index * 60}>
@@ -425,7 +422,7 @@ const ProjectsPage = ({ onNavigate }) => {
                                             style={{objectPosition: 'center center'}}
                                             loading={index === 0 ? 'eager' : 'lazy'}
                                             decoding="async"
-                                            onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop'}}
+                                            onError={hideOnError}
                                         />
                                         {/* Hover overlay for available projects */}
                                         {isAvailable ? (
@@ -509,7 +506,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                         className="absolute inset-0 w-full h-full object-cover" 
                         alt={project.title}
                         style={{objectPosition: 'center center'}}
-                        onError={(e) => {e.target.src = 'https://images.unsplash.com/photo-1513205739345-3269d05634b3?q=80&w=2670&auto=format&fit=crop'}}
+                        onError={hideOnError}
                     />
                 </div>
             </div>
@@ -537,7 +534,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                                 src={item.src}
                                                 loading="lazy"
                                                 decoding="async"
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
+                                                onError={hideFrameOnError}
                                             />
                                         </div>
                                         {item.caption && (
@@ -558,7 +555,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                     alt="Challenge View"
                                     loading="lazy"
                                     decoding="async"
-                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
+                                    onError={hideFrameOnError}
                                 />
                             </div>
                         </FadeInSection>
@@ -570,7 +567,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                     src={project.images[0]} 
                                     className="w-full h-auto object-cover" 
                                     alt="Challenge View" 
-                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                    onError={hideFrameOnError}
                                 />
                             </div>
                         </FadeInSection>
@@ -603,7 +600,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                                     src={item.src}
                                                     loading="lazy"
                                                     decoding="async"
-                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
+                                                    onError={hideFrameOnError}
                                                 />
                                             </div>
                                             {item.caption && (
@@ -626,7 +623,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                                     src={item.src}
                                                     loading="lazy"
                                                     decoding="async"
-                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
+                                                    onError={hideFrameOnError}
                                                 />
                                             </div>
                                             {item.caption && (
@@ -646,7 +643,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                                 className="w-full h-auto object-cover" 
                                                 alt={project.processImages[4].caption || 'Process View'} 
                                                 src={project.processImages[4].src}
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                                onError={hideFrameOnError}
                                             />
                                         </div>
                                         {project.processImages[4].caption && (
@@ -666,7 +663,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                         src={project.images[1]} 
                                         className="w-full h-auto object-cover" 
                                         alt="Process View" 
-                                        onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                        onError={hideFrameOnError}
                                     />
                                 </div>
                             </FadeInSection>
@@ -699,7 +696,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                                     src={item.src}
                                                     loading="lazy"
                                                     decoding="async"
-                                                    onError={(e) => e.target.src='https://via.placeholder.com/800x800'}
+                                                    onError={hideFrameOnError}
                                                 />
                                             </div>
                                             {item.caption && (
@@ -718,7 +715,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                         src={project.designImage} 
                                         className="w-full h-auto object-cover" 
                                         alt="Design Detail" 
-                                        onError={(e) => e.target.src='https://via.placeholder.com/800x800'} 
+                                        onError={hideFrameOnError}
                                     />
                                 </div>
                             </FadeInSection>
@@ -748,7 +745,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                                 className="w-full h-auto object-cover" 
                                                 alt={item.caption || 'Final Product'} 
                                                 src={item.src}
-                                                onError={(e) => e.target.src='https://via.placeholder.com/800x600'} 
+                                                onError={hideFrameOnError}
                                             />
                                         </div>
                                         {item.caption && (
@@ -769,7 +766,7 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                                     alt="Final Product"
                                     loading="lazy"
                                     decoding="async"
-                                    onError={(e) => e.target.src='https://via.placeholder.com/800x600'}
+                                    onError={hideFrameOnError}
                                 />
                             </div>
                         </FadeInSection>
@@ -838,7 +835,7 @@ const ContactPage = () => {
                                     <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Contact Details</h4>
                                     <ul className="space-y-4 text-lg text-gray-800">
                                         <li>
-                                            <a href="tel:+9720547530732" className="hover:text-gray-500 transition-colors">
+                                            <a href="tel:+972547530732" className="hover:text-gray-500 transition-colors">
                                                 0547-530732
                                             </a>
                                         </li>
@@ -916,9 +913,9 @@ export default function App() {
 
   const navigateToNextProject = () => {
     if (!selectedProject) return;
-    const currentIndex = PROJECTS.findIndex(p => p.id === selectedProject.id);
-    const nextIndex = (currentIndex + 1) % PROJECTS.length;
-    const nextProject = PROJECTS[nextIndex];
+    const available = PROJECTS.filter(p => p.available);
+    const currentIndex = available.findIndex(p => p.id === selectedProject.id);
+    const nextProject = available[(currentIndex + 1) % available.length];
     navigateTo('detail', nextProject);
   };
 

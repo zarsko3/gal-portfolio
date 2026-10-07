@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-laptop-lg: 80rem;
+}
+
 html {
   scroll-padding-top: 100px; /* Account for sticky navbar height */
   scroll-behavior: smooth;
