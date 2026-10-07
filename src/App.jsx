@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, PenTool, ArrowUpRight, Monitor, Box, Layers, Sparkles, Focus, LayoutGrid, List, Smartphone, Cpu, ImageIcon } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, PenTool, ArrowUpRight, Monitor, Box, Layers, Sparkles, Focus, LayoutGrid, List, Smartphone, Cpu, ImageIcon, Volume2, VolumeX } from 'lucide-react';
 
 import { PROJECTS, DISCIPLINES } from './data/projects';
 
@@ -521,6 +521,56 @@ const ProjectsPage = ({ onNavigate, filter, onFilterChange }) => {
     );
 };
 
+// Vertical launch film: plays muted on its own (browsers require it); one tap turns the music on.
+const LaunchFilm = ({ promo, title }) => {
+    const ref = useRef(null);
+    const [muted, setMuted] = useState(true);
+    const toggle = () => {
+        const v = ref.current;
+        if (!v) return;
+        v.muted = !muted;
+        if (muted) { v.currentTime = 0; v.play(); }
+        setMuted(!muted);
+    };
+    return (
+        <section className="py-16 md:py-24 bg-[#F3F3F3] relative z-10">
+            <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col items-center">
+                <FadeInSection>
+                    <div className="text-center mb-10">
+                        <span className="text-sm font-bold uppercase tracking-widest text-gray-400 block mb-3">Launch Film</span>
+                        <p className="text-base md:text-lg text-gray-600 max-w-md mx-auto">{promo.caption}</p>
+                    </div>
+                </FadeInSection>
+                <FadeInSection delay={150}>
+                    <div className="relative" style={{ width: 'min(100%, calc(min(78vh, 760px) * 9 / 16))', aspectRatio: '9 / 16' }}>
+                        <video
+                            ref={ref}
+                            className="w-full h-full object-cover rounded-[28px] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] bg-white"
+                            src={promo.src}
+                            poster={promo.poster}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            aria-label={`${title} launch film`}
+                        />
+                        <button
+                            type="button"
+                            onClick={toggle}
+                            className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-black/70 hover:bg-black/85 text-white text-xs font-bold uppercase tracking-widest pl-3 pr-4 py-2.5 backdrop-blur-md transition-colors"
+                            aria-label={muted ? 'Turn sound on' : 'Mute'}
+                        >
+                            {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                            {muted ? 'Sound on' : 'Mute'}
+                        </button>
+                    </div>
+                </FadeInSection>
+            </div>
+        </section>
+    );
+};
+
 // 4. UNIFIED PROJECT DETAIL
 const ProjectDetail = ({ project, onBack, onNext }) => {
     if (!project) return null;
@@ -580,6 +630,8 @@ const ProjectDetail = ({ project, onBack, onNext }) => {
                     />
                 </section>
             )}
+
+            {project.promo && <LaunchFilm promo={project.promo} title={project.title} />}
 
             {/* The Challenge Section */}
             <section className="py-16 md:py-24 bg-white relative z-10">
