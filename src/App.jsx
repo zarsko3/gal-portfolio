@@ -1,148 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Linkedin, PenTool, Camera, ArrowUpRight, Monitor, Box, Layers, Video, Sparkles, Focus } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, PenTool, ArrowUpRight, Monitor, Box, Layers, Sparkles, Focus, LayoutGrid, List, Smartphone, Cpu } from 'lucide-react';
 
-/* --- DATA SOURCE --- */
-const PROJECTS = [
-  {
-    id: 'line8',
-    title: 'LINE•8',
-    subtitle: 'Hanukkiah',
-    category: 'Product Design',
-    year: '2024',
-    thumb: '7.webp',
-    heroImage: '6.webp',
-    description: 'A minimalist Hanukkiah crafted for precision, simplicity, and longevity.',
-    quote: 'A minimalist Hanukkiah crafted for precision, simplicity, and longevity.',
-    fullText: {
-      brief: 'Create a full, functional Hanukkiah with extreme simplicity: a complete form produced in a single press operation, without complex assembly or unnecessary parts. LINE•8 embraces the beauty of the material in its natural state, taking a familiar, timeless object and elevating it into something precise, premium, and built to last.',
-      process: 'The process always starts small. An idea grows through quick, hands-on iterations. First come fast sketches to explore proportion, candle spacing, and the core silhouette. Then the design moves into digital modeling to lock geometry and tolerances. Finally, 3D prints and feasibility tests validate scale, stability, and real-world usability before final production.',
-      design: 'LINE•8 is intentionally minimal. Clean surfaces, sharp geometry, and calm proportions let the object speak without decoration. Aluminum was chosen for precision, durability, and a refined feel. The finish is oven-cured powder coating for a clean, resilient surface. Multiple color options are offered while preserving the same iconic form.',
-      result: 'A modern take on a classic ritual object. Simple, premium, and satisfying to use. The final presentation continues the same philosophy with a minimal, elegant package that protects the product and feels intentional from the first moment you open it.'
-    },
-    challengeImage: '13.webp',
-    processImages: [
-      { src: '2.webp', caption: 'Early sketch studies. Form and proportions.' },
-      { src: '9.webp', caption: 'Prototype iterations. Testing usability and scale.' },
-      { src: '10.webp', caption: 'Packaging exploration. Minimal, protective, gift-ready.' }
-    ],
-    designImage: '4.webp',
-    resultImage: '8.webp',
-    isCustom: true,
-    available: true
-  },
-  {
-    id: 'yurbu',
-    title: 'YURBU',
-    category: 'Consumer Electronics',
-    year: '2023',
-    thumb: '18.webp',
-    heroImage: '18.webp',
-    description: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
-    quote: 'YURBU is an automatic coffee machine concept designed to feel like a trained barista at home, personalized to each user.',
-    fullText: {
-      brief: 'Great coffee is often slowed down by friction: waiting, repeating an order, and inconsistent results. YURBU tackles this by learning habits and preferences, then using ongoing data gathering to continuously improve performance over time.',
-      process: 'YURBU combines product design with a digital experience. Alongside the machine concept, an accompanying UI layer supports customization and repeatability, so personalization feels simple and intuitive rather than overly technical. Visual development moved between clean concept renders and real-world validation, building the project beyond a single image into a complete design story.',
-      design: 'A minimal, premium appliance language that fits naturally in a modern kitchen, paired with an experience that remembers the user and removes unnecessary steps while keeping interaction clear and familiar.',
-      result: 'A cohesive hardware and UI concept: a coffee machine that does not just make coffee, it gets better at making your coffee.'
-    },
-    challengeImages: [
-      { src: '21.webp', caption: '' },
-      { src: '22.webp', caption: '' }
-    ],
-    processImages: [
-      { src: '19.webp', caption: '' },
-      { src: '20.webp', caption: '' },
-      { src: '23.webp', caption: '' },
-      { src: '24.webp', caption: '' },
-      { src: '25.webp', caption: '' }
-    ],
-    designImages: [
-      { src: '14.webp', caption: '' },
-      { src: '15.webp', caption: '' }
-    ],
-    available: true
-  },
-  {
-    id: 'hezus',
-    title: 'HEZUS',
-    category: 'Marine Design',
-    year: '2023',
-    thumb: 'hezus-thumb.webp',
-    description: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
-    quote: 'HEZUS is a one-person lake vessel concept designed for a calm, stable, and stress-free solo sailing experience.',
-    fullText: {
-      brief: 'Many small vessels can feel unstable and demanding. HEZUS aims to shift the focus from effort to ease by designing a solo craft centered on tranquility, comfort, and confidence on the water, using rotational technology to reduce typical on-water stress.',
-      process: 'The concept was developed through iterative form exploration and proportion studies, followed by surface refinement and visualization. Multiple render iterations helped validate the identity and how the vessel reads from different angles, while color variations ensured the design language stays consistent across finishes.',
-      design: 'A sculpted, approachable silhouette that communicates stability and comfort. The visual language is calm and friendly rather than aggressive, supporting the idea of a quiet personal escape.',
-      result: 'A distinctive leisure concept designed to help users disconnect from daily noise and enjoy a peaceful solo ride on the water.'
-    },
-    images: [
-      'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1567808291548-79b8c9c9f3e3?q=80&w=2000&auto=format&fit=crop'
-    ]
-  },
-  {
-    id: 'testudo',
-    title: 'TESTODO',
-    category: 'Tech Accessories',
-    year: '2023',
-    thumb: 'testodo-thumb.webp',
-    description: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
-    quote: 'TESTODO is a minimalist iPhone smart cover concept that adds tracking and audible find-me functionality while keeping the look clean and familiar.',
-    fullText: {
-      brief: 'Most "smart" accessories look bulky or obviously tech-driven. The goal was to design a cover that blends in like a regular phone case, while adding the capability to be tracked and located by sound, without sacrificing the aesthetic appearance of the device.',
-      process: 'The project focused on integrating "invisible" capability into an everyday object. The design was developed around usability and simplicity, ensuring the added features feel natural and do not change how the case is used day to day.',
-      design: 'A clean, minimal design language with calm surfaces and a familiar silhouette. The form is intentionally understated so the smart functionality stays in the background and the product still feels like a normal case first.',
-      result: 'A simple, effective solution for users who want to upgrade their phone with practical tracking and audible location features, without adding bulk or compromising the iPhone\'s appearance.'
-    },
-    images: [
-      'https://images.unsplash.com/photo-1603313011101-320f26a4f6f6?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1541877944-ac82a091518a?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1586105251261-72a756497a11?q=80&w=2000&auto=format&fit=crop'
-    ]
-  },
-  {
-    id: 'greenbrush',
-    title: 'GREEN BRUSH',
-    category: 'Sustainability',
-    year: '2023',
-    thumb: 'green-brush-thumb.webp',
-    description: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
-    quote: 'GREEN BRUSH is a compact maintenance capsule concept designed to help keep solar panels performing efficiently through cleaner water and simpler upkeep.',
-    fullText: {
-      brief: 'Solar panels can lose performance over time due to impurities and corrosion-related issues. GREEN BRUSH addresses this by introducing a small capsule containing a natural resin, designed to be inserted into the water transportation system. As water passes through the capsule, it becomes distilled and impurities that could cause damage or decrease efficiency are removed.',
-      process: 'The concept was developed around real maintenance flow. First, define how the capsule integrates into existing water transport and how a user installs it quickly and correctly. Then refine the form through iterations that balance durability, grip, and clear functional cues. Finally, validate the concept through physical-scale checks and visual development to ensure it reads as a robust, service-friendly product.',
-      design: 'A clean, functional cylindrical form with a no-nonsense "tool" feel. The capsule is designed to work within the water system, and it can also connect to an external faucet to support external cleaning of the panels, keeping maintenance accessible and straightforward.',
-      result: 'A simple product concept that supports long-term solar panel maintenance and helps keep panels working at their optimal capacity through cleaner water and easier cleaning routines.'
-    },
-    images: [
-      'https://images.unsplash.com/photo-1545208639-654c60920b66?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2000&auto=format&fit=crop'
-    ]
-  },
-  {
-    id: 'strikeco',
-    title: 'STRIKECOSENSE',
-    category: 'Sports Tech',
-    year: '2023',
-    thumb: 'Strikco-thumb.webp',
-    description: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
-    quote: 'STRIKECOSENSE is a tennis training device concept designed to help players improve their skills, supported by an app and simulator for a more realistic practice experience.',
-    fullText: {
-      brief: 'Training can be repetitive without clear feedback or progression. STRIKECOSENSE was designed to serve both beginners and experienced players by combining a physical training device with a digital layer that makes practice more engaging, measurable, and skill-focused.',
-      process: 'The concept was developed as a full ecosystem rather than a standalone object. Form iterations focused on stability, interaction points, and a clear sports-tech identity. In parallel, the app and simulator experience was shaped to support a repeatable training loop that encourages improvement over time.',
-      design: 'A compact, approachable product language that communicates where and how to interact. The form is performance-forward but intentionally simple, keeping the user focused on training rather than setup.',
-      result: 'A cohesive training concept that combines hardware and software into a single experience, helping users practice more effectively and push their gameplay to the next level.'
-    },
-    images: [
-      'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1599474924187-334a4ae513ab?q=80&w=2000&auto=format&fit=crop'
-    ]
-  }
-];
+import { PROJECTS, DISCIPLINES } from './data/projects';
 
 /* --- UI COMPONENTS --- */
 
@@ -204,7 +63,7 @@ const HomePage = ({ onNavigate }) => {
         <div className="relative z-10 text-center max-w-3xl mx-auto w-full">
             <FadeInSection>
                 <p className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-6 text-gray-400">
-                    Industrial Designer — Tel Aviv
+                    Product Designer — Tel Aviv
                 </p>
             </FadeInSection>
 
@@ -279,13 +138,13 @@ const AboutPage = () => {
                         Gal<br/>Zarski
                     </h1>
                     <h2 className="text-sm md:text-base font-bold tracking-[0.4em] uppercase text-gray-500 mb-16">
-                        Industrial Designer
+                        Product Designer
                     </h2>
                 </FadeInSection>
 
                 <FadeInSection delay={200}>
                     <p className="text-lg md:text-2xl xl:text-3xl font-light leading-relaxed text-gray-700 max-w-4xl mb-16">
-                        I'm an industrial designer living in Tel Aviv with a deep passion for making things concept to production. I combine sharp attention to detail with a practical mindset to create designs that are both beautiful and built to ship.
+                        I'm a product designer living in Tel Aviv, working across physical products and digital experiences. Trained as an industrial designer, I take products from concept to production, from the form in your hand to the interface on your screen. I combine sharp attention to detail with a practical mindset to create designs that are both beautiful and built to ship.
                     </p>
                 </FadeInSection>
             </div>
@@ -322,6 +181,8 @@ const AboutPage = () => {
                             </ul>
                             <ul className="space-y-3">
                                 <li className="flex items-center gap-3"><Box size={18} className="flex-shrink-0" /> 3D Printing</li>
+                                <li className="flex items-center gap-3"><Smartphone size={18} className="flex-shrink-0" /> UI / UX Design</li>
+                                <li className="flex items-center gap-3"><Cpu size={18} className="flex-shrink-0" /> Hardware Prototyping</li>
                                 <li className="flex items-center gap-3"><Sparkles size={18} className="flex-shrink-0" /> AI Expert</li>
                             </ul>
                         </div>
@@ -386,89 +247,232 @@ const AboutPage = () => {
   );
 };
 
-// 3. PROJECTS INDEX
-const ProjectsPage = ({ onNavigate }) => {
-  return (
-    <div className="min-h-screen bg-transparent pt-24 sm:pt-28 md:pt-32 px-6 md:px-12 lg:px-20 pb-32 relative">
-        <div className="max-w-[1400px] laptop:max-w-[1200px] xl:max-w-[1600px] mx-auto relative z-10">
-            <FadeInSection>
-                <div className="mb-12 md:mb-16 border-b border-gray-200 pb-6 md:pb-8">
-                    <h1 className="text-4xl md:text-5xl laptop:text-6xl font-black tracking-tighter uppercase text-black mb-2">Work</h1>
-                    <p className="text-sm md:text-base text-gray-500 font-mono">SELECTED WORKS ({String(PROJECTS.length).padStart(2, '0')})</p>
+// 3. WORK INDEX (dashboard)
+const FILTERS = [{ id: 'all', label: 'All Work', short: 'All' }, ...DISCIPLINES];
+const pad2 = (n) => String(n).padStart(2, '0');
+const matchesFilter = (project, filter) => filter === 'all' || project.disciplines.includes(filter);
+const disciplineShort = (id) => DISCIPLINES.find(d => d.id === id)?.short ?? id;
+
+const ProjectTile = ({ project, number, onOpen }) => {
+    const isAvailable = !!project.available;
+    return (
+        <article
+            className={`group flex flex-col h-full ${isAvailable ? 'cursor-pointer' : 'cursor-default'}`}
+            onClick={() => isAvailable && onOpen(project)}
+        >
+            <div className="aspect-[4/5] bg-gray-100 overflow-hidden relative rounded-xl border border-gray-200/70">
+                <img
+                    src={project.thumb}
+                    alt={project.title}
+                    className={`w-full h-full object-cover transition-transform duration-500 ease-out ${isAvailable ? 'group-hover:scale-[1.03]' : 'opacity-40 grayscale'}`}
+                    loading={number <= 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    onError={hideOnError}
+                />
+                <span className="absolute top-3 left-3 text-[10px] font-mono text-gray-700 bg-white/90 backdrop-blur px-2 py-1 rounded-md">
+                    {pad2(number)}
+                </span>
+                <div className="absolute top-3 right-3 flex gap-1.5">
+                    {project.disciplines.map(d => (
+                        <span key={d} className="text-[9px] font-bold uppercase tracking-widest text-gray-700 bg-white/90 backdrop-blur px-2 py-1 rounded-md">
+                            {disciplineShort(d)}
+                        </span>
+                    ))}
                 </div>
-            </FadeInSection>
+                {isAvailable ? (
+                    <div className="absolute bottom-3 right-3 w-10 h-10 bg-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                        <ArrowUpRight size={16} className="text-white" />
+                    </div>
+                ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-white/90 px-3 py-1.5 rounded-md">
+                            Coming Soon
+                        </span>
+                    </div>
+                )}
+            </div>
+            <div className="pt-4 flex items-baseline justify-between gap-3">
+                <h2 className={`text-base md:text-lg font-semibold tracking-tight leading-tight ${isAvailable ? 'text-black' : 'text-gray-400'}`}>
+                    {project.title}
+                </h2>
+                <span className="text-xs font-mono text-gray-400 flex-shrink-0">{project.year}</span>
+            </div>
+            <p className={`text-[11px] font-bold uppercase tracking-widest mt-1.5 ${isAvailable ? 'text-gray-500' : 'text-gray-300'}`}>
+                {project.category}
+            </p>
+            <p className={`text-sm font-light leading-relaxed line-clamp-2 mt-3 ${isAvailable ? 'text-gray-500' : 'text-gray-300'}`}>
+                {project.description}
+            </p>
+        </article>
+    );
+};
 
-            {/* 4+2 Grid Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 laptop:gap-12">
-                {PROJECTS.map((project, index) => {
-                    const positionInCycle = index % 6;
-                    const shouldSpanTwo = positionInCycle >= 4;
+const ProjectRow = ({ project, number, onOpen }) => {
+    const isAvailable = !!project.available;
+    return (
+        <button
+            type="button"
+            onClick={() => isAvailable && onOpen(project)}
+            className={`group w-full grid grid-cols-[40px_1fr_auto] md:grid-cols-[48px_96px_1.5fr_1fr_1fr_56px_24px] items-center gap-4 py-4 px-2 border-b border-gray-200 text-left transition-colors ${
+                isAvailable ? 'hover:bg-white/70 cursor-pointer' : 'cursor-default'
+            }`}
+        >
+            <span className="text-xs font-mono text-gray-400">{pad2(number)}</span>
+            <div className="hidden md:block w-[96px] h-[64px] rounded-md overflow-hidden bg-gray-100 border border-gray-200/70">
+                <img
+                    src={project.thumb}
+                    alt=""
+                    className={`w-full h-full object-cover ${isAvailable ? '' : 'opacity-40 grayscale'}`}
+                    loading="lazy"
+                    decoding="async"
+                    onError={hideOnError}
+                />
+            </div>
+            <div className="min-w-0">
+                <p className={`text-base md:text-lg font-semibold tracking-tight truncate ${isAvailable ? 'text-black' : 'text-gray-400'}`}>
+                    {project.title}
+                </p>
+                <p className="text-xs text-gray-400 truncate md:hidden">{project.category} · {project.year}</p>
+                {project.subtitle && <p className="hidden md:block text-xs text-gray-400 truncate">{project.subtitle}</p>}
+            </div>
+            <span className={`hidden md:block text-xs font-bold uppercase tracking-widest ${isAvailable ? 'text-gray-500' : 'text-gray-300'}`}>
+                {project.category}
+            </span>
+            <div className="hidden md:flex gap-1.5 flex-wrap">
+                {project.disciplines.map(d => (
+                    <span key={d} className={`text-[9px] font-bold uppercase tracking-widest border px-2 py-1 rounded-md ${isAvailable ? 'text-gray-600 border-gray-300' : 'text-gray-300 border-gray-200'}`}>
+                        {disciplineShort(d)}
+                    </span>
+                ))}
+            </div>
+            <span className="hidden md:block text-xs font-mono text-gray-400">{project.year}</span>
+            <span className="flex justify-end">
+                {isAvailable ? (
+                    <ArrowUpRight size={16} className="text-gray-400 group-hover:text-black transition-colors" />
+                ) : (
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-gray-300">Soon</span>
+                )}
+            </span>
+        </button>
+    );
+};
 
-                    const isAvailable = !!project.available;
+const ProjectsPage = ({ onNavigate, filter, onFilterChange }) => {
+    const [layout, setLayout] = useState('grid');
+    const visible = PROJECTS.filter(p => matchesFilter(p, filter));
+    const years = PROJECTS.map(p => Number(p.year));
+    const caseStudies = PROJECTS.filter(p => p.available).length;
+    const openProject = (project) => onNavigate('detail', project);
 
-                    return (
-                       <FadeInSection key={project.id} delay={index * 60}>
-                            <div
-                                className={`group ${isAvailable ? 'cursor-pointer' : 'cursor-default'} ${shouldSpanTwo ? 'sm:col-span-2' : ''}`}
-                                onClick={() => isAvailable && onNavigate('detail', project)}
-                            >
-                                <div className="flex flex-col h-full">
-                                    {/* Image */}
-                                    <div className="aspect-[3/4] bg-gray-100 overflow-hidden relative mb-5 rounded-sm">
-                                        <img
-                                            src={project.thumb}
-                                            alt={project.title}
-                                            className={`w-full h-full object-cover transition-transform duration-500 ease-out ${isAvailable ? 'group-hover:scale-[1.03]' : 'opacity-40 grayscale'}`}
-                                            style={{objectPosition: 'center center'}}
-                                            loading={index === 0 ? 'eager' : 'lazy'}
-                                            decoding="async"
-                                            onError={hideOnError}
-                                        />
-                                        {/* Hover overlay for available projects */}
-                                        {isAvailable ? (
-                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-end p-4">
-                                                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                                                    <ArrowUpRight size={16} className="text-white" />
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-white/90 px-3 py-1.5 rounded-sm">
-                                                    Coming Soon
-                                                </span>
-                                            </div>
-                                        )}
+    return (
+        <div className="min-h-screen bg-transparent pt-24 sm:pt-28 md:pt-32 px-6 md:px-12 lg:px-20 pb-32 relative">
+            <div className="max-w-[1600px] mx-auto relative z-10 lg:grid lg:grid-cols-[240px_1fr] lg:gap-14 xl:gap-20">
+                {/* Control panel */}
+                <aside className="mb-10 lg:mb-0">
+                    <div className="lg:sticky lg:top-28">
+                        <FadeInSection>
+                            <h1 className="text-4xl md:text-5xl laptop:text-6xl font-black tracking-tighter uppercase text-black mb-2">Work</h1>
+                            <p className="text-xs md:text-sm text-gray-500 font-mono mb-8 lg:mb-12">
+                                INDEX {Math.min(...years)}—{Math.max(...years)}
+                            </p>
+
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Discipline</p>
+                            <nav className="flex lg:flex-col gap-2 overflow-x-auto -mx-6 px-6 lg:mx-0 lg:px-0 pb-1 lg:pb-0" aria-label="Filter projects">
+                                {FILTERS.map(f => {
+                                    const count = PROJECTS.filter(p => matchesFilter(p, f.id)).length;
+                                    const active = filter === f.id;
+                                    return (
+                                        <button
+                                            key={f.id}
+                                            type="button"
+                                            onClick={() => onFilterChange(f.id)}
+                                            aria-pressed={active}
+                                            className={`flex items-center justify-between gap-3 lg:gap-6 px-3 lg:px-4 py-3 rounded-lg border text-left transition-colors duration-200 flex-shrink-0 ${
+                                                active
+                                                    ? 'bg-black text-white border-black'
+                                                    : 'bg-white/70 border-gray-200 text-gray-600 hover:border-gray-400 hover:text-black'
+                                            }`}
+                                        >
+                                            <span className="text-[11px] lg:text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+                                                <span className="lg:hidden">{f.short}</span>
+                                                <span className="hidden lg:inline">{f.label}</span>
+                                            </span>
+                                            <span className={`text-xs font-mono ${active ? 'text-white/60' : 'text-gray-400'}`}>{pad2(count)}</span>
+                                        </button>
+                                    );
+                                })}
+                            </nav>
+
+                            <dl className="hidden lg:grid grid-cols-1 gap-5 mt-12 pt-8 border-t border-gray-200">
+                                {[
+                                    ['Projects', PROJECTS.length],
+                                    ['Case studies', caseStudies],
+                                    ['Disciplines', DISCIPLINES.length],
+                                ].map(([label, value]) => (
+                                    <div key={label} className="flex items-baseline justify-between">
+                                        <dt className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</dt>
+                                        <dd className="text-2xl font-black tracking-tight text-black">{pad2(value)}</dd>
                                     </div>
+                                ))}
+                            </dl>
+                        </FadeInSection>
+                    </div>
+                </aside>
 
-                                    {/* Text */}
-                                    <div className="flex items-start justify-between mb-2">
-                                        <h2 className={`text-base md:text-lg font-semibold tracking-tight leading-tight ${isAvailable ? 'text-black' : 'text-gray-400'}`}>
-                                            {project.title}
-                                        </h2>
-                                        <span className="text-xs font-mono text-gray-400 ml-3 mt-0.5 flex-shrink-0">{project.year}</span>
-                                    </div>
-                                    <span className={`inline-block text-[10px] font-bold uppercase tracking-widest border px-2 py-0.5 rounded-sm mb-3 ${isAvailable ? 'text-gray-500 border-gray-200' : 'text-gray-300 border-gray-100'}`}>
-                                        {project.category}
-                                    </span>
-                                    <p className={`text-sm font-light leading-relaxed line-clamp-2 ${isAvailable ? 'text-gray-500' : 'text-gray-300'}`}>
-                                        {project.description}
-                                    </p>
+                {/* Results */}
+                <section>
+                    <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
+                        <p className="text-xs font-mono text-gray-500">
+                            SHOWING {pad2(visible.length)} / {pad2(PROJECTS.length)}
+                        </p>
+                        <div className="flex items-center gap-1 p-1 rounded-lg border border-gray-200 bg-white/70" role="group" aria-label="Layout">
+                            {[
+                                { id: 'grid', icon: LayoutGrid, label: 'Grid view' },
+                                { id: 'list', icon: List, label: 'List view' },
+                            ].map(({ id, icon, label }) => {
+                                const Icon = icon;
+                                return (
+                                <button
+                                    key={id}
+                                    type="button"
+                                    onClick={() => setLayout(id)}
+                                    aria-label={label}
+                                    aria-pressed={layout === id}
+                                    className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+                                        layout === id ? 'bg-black text-white' : 'text-gray-400 hover:text-black'
+                                    }`}
+                                >
+                                    <Icon size={15} strokeWidth={1.75} />
+                                </button>
+                                );
+                            })}
+                        </div>
+                    </div>
 
-                                    {/* Index number */}
-                                    <div className="mt-5 pt-5 border-t border-gray-100">
-                                        <span className="text-xs font-mono text-gray-300">
-                                            {String(index + 1).padStart(2, '0')}
-                                        </span>
-                                    </div>
-                                </div>
+                    {layout === 'grid' ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12 laptop:gap-x-10">
+                            {visible.map((project, index) => (
+                                <FadeInSection key={`${filter}-${project.id}`} delay={index * 60}>
+                                    <ProjectTile project={project} number={PROJECTS.indexOf(project) + 1} onOpen={openProject} />
+                                </FadeInSection>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            <div className="hidden md:grid grid-cols-[48px_96px_1.5fr_1fr_1fr_56px_24px] gap-4 px-2 pb-3 border-b border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                                <span>No.</span><span /><span>Project</span><span>Category</span><span>Discipline</span><span>Year</span><span />
                             </div>
-                       </FadeInSection>
-                    );
-                })}
+                            {visible.map((project, index) => (
+                                <FadeInSection key={`${filter}-${project.id}`} delay={index * 40}>
+                                    <ProjectRow project={project} number={PROJECTS.indexOf(project) + 1} onOpen={openProject} />
+                                </FadeInSection>
+                            ))}
+                        </div>
+                    )}
+                </section>
             </div>
         </div>
-    </div>
-  );
+    );
 };
 
 // 4. UNIFIED PROJECT DETAIL
@@ -862,15 +866,50 @@ const ContactPage = () => {
     );
 };
 
+/* --- ROUTING --- */
+const DEFAULT_TITLE = 'Gal Zarski — Product Designer';
+
+const routeFromLocation = () => {
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  const discipline = new URLSearchParams(window.location.search).get('d');
+  const filter = DISCIPLINES.some(d => d.id === discipline) ? discipline : 'all';
+  if (parts[0] === 'about' || parts[0] === 'contact') return { view: parts[0], project: null, filter };
+  if (parts[0] === 'work') {
+    const project = PROJECTS.find(p => p.id === parts[1] && p.available);
+    return project ? { view: 'detail', project, filter } : { view: 'projects', project: null, filter };
+  }
+  return { view: 'home', project: null, filter };
+};
+
+const pathFor = ({ view, project, filter }) => {
+  if (view === 'detail') return `/work/${project.id}`;
+  if (view === 'projects') return filter === 'all' ? '/work' : `/work?d=${filter}`;
+  if (view === 'home') return '/';
+  return `/${view}`;
+};
+
 /* --- MAIN APP --- */
 export default function App() {
-  const [currentView, setCurrentView] = useState('home');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [route, setRoute] = useState(routeFromLocation);
+  const { view: currentView, project: selectedProject, filter } = route;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [currentView, selectedProject]);
+
+  // Canonicalize unknown or locked URLs, and follow browser back/forward.
+  useEffect(() => {
+    const path = pathFor(routeFromLocation());
+    if (path !== window.location.pathname + window.location.search) window.history.replaceState(null, '', path);
+    const onPopState = () => setRoute(routeFromLocation());
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  useEffect(() => {
+    document.title = selectedProject && currentView === 'detail' ? `${selectedProject.title} — Gal Zarski` : DEFAULT_TITLE;
+  }, [currentView, selectedProject]);
 
   useEffect(() => {
     let ticking = false;
@@ -904,11 +943,17 @@ export default function App() {
   }, [lastScrollY]);
 
   const navigateTo = (view, project = null) => {
-    setCurrentView(view);
-    if (project) setSelectedProject(project);
+    const next = { view, project: view === 'detail' ? project : null, filter };
+    const path = pathFor(next);
+    if (path !== window.location.pathname + window.location.search) window.history.pushState(null, '', path);
+    setRoute(next);
     setIsMenuOpen(false);
-    // Scroll to top when navigating
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const changeFilter = (nextFilter) => {
+    const next = { ...route, filter: nextFilter };
+    window.history.replaceState(null, '', pathFor(next));
+    setRoute(next);
   };
 
   const navigateToNextProject = () => {
@@ -1041,7 +1086,7 @@ export default function App() {
       >
         {currentView === 'home' && <HomePage onNavigate={navigateTo} />}
         {currentView === 'about' && <AboutPage />}
-        {currentView === 'projects' && <ProjectsPage onNavigate={navigateTo} />}
+        {currentView === 'projects' && <ProjectsPage onNavigate={navigateTo} filter={filter} onFilterChange={changeFilter} />}
         {currentView === 'contact' && <ContactPage />}
         {currentView === 'detail' && selectedProject && (
           <ProjectDetail
