@@ -221,6 +221,7 @@ const AboutPage = () => {
                         <div className="group">
                             <span className="text-sm font-mono text-gray-500 mb-2 block">2020 — 2023</span>
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Kaufman R&D</h4>
+                            <p className="text-base text-gray-500 font-medium mt-1">Industrial Designer</p>
                             <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
                                 Managed formal development from concept to production. Oversaw the design field, communicated directly with suppliers, exported parts for production, managed 3D printers.
                             </p>
@@ -228,6 +229,7 @@ const AboutPage = () => {
                         <div className="group">
                             <span className="text-sm font-mono text-gray-500 mb-2 block">2019 — 2020</span>
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">P.K Studio</h4>
+                            <p className="text-base text-gray-500 font-medium mt-1">Industrial Designer</p>
                             <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
                                 Design and develop high-quality products for clients using plastic injection and mold making techniques.
                             </p>
@@ -235,6 +237,7 @@ const AboutPage = () => {
                         <div className="group">
                             <span className="text-sm font-mono text-gray-500 mb-2 block">2018 — 2019</span>
                             <h4 className="text-2xl font-bold group-hover:text-gray-600 transition-colors">Vagman Design House</h4>
+                            <p className="text-base text-gray-500 font-medium mt-1">Industrial Designer</p>
                             <p className="text-base text-gray-600 mt-4 leading-relaxed max-w-lg">
                                 Design and develop innovative products that meet client and user needs. Manage projects from concept to production.
                             </p>
