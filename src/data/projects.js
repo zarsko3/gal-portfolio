@@ -40,7 +40,7 @@ export const PROJECTS = [
     year: '2026',
     thumb: 'rocking-thumb.webp',
     heroImage: 'rocking-hero.webp',
-    promo: { src: 'rocking-promo.mp4', poster: 'rocking-promo-poster.webp', caption: "One tap, and the stroller keeps the rhythm. A 30-second launch film built from the app's real screens." },
+    promo: { src: 'rocking-promo.mp4', poster: 'rocking-promo-poster.webp' },
     description: 'A motorized stroller rocker and its companion app. Pick a calm motion mode on your phone and the stroller keeps the rhythm for you.',
     quote: 'One tap, and the stroller rocks. Hardware and app designed as a single calm experience.',
     fullText: {
@@ -65,7 +65,7 @@ export const PROJECTS = [
     year: '2025',
     thumb: 'maybe-thumb.webp',
     heroImage: 'maybe-hero.webp',
-    promo: { src: 'maybe-promo.mp4', poster: 'maybe-promo-poster.webp', caption: "Swipe privately, match together. A 35-second launch film built from the app's real screens." },
+    promo: { src: 'maybe-promo.mp4', poster: 'maybe-promo-poster.webp' },
     description: 'A Hebrew baby-name app for couples. Each partner swipes privately, and a name only appears when you both liked it.',
     quote: 'Choosing a name together, without anyone having to say no out loud.',
     fullText: {

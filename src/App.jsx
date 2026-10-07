@@ -537,12 +537,11 @@ const LaunchFilm = ({ promo, title }) => {
             <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col items-center">
                 <FadeInSection>
                     <div className="text-center mb-10">
-                        <span className="text-sm font-bold uppercase tracking-widest text-gray-400 block mb-3">Launch Film</span>
-                        <p className="text-base md:text-lg text-gray-600 max-w-md mx-auto">{promo.caption}</p>
+                        <span className="text-sm font-bold uppercase tracking-widest text-gray-400 block">Launch Film</span>
                     </div>
                 </FadeInSection>
                 <FadeInSection delay={150}>
-                    <div className="relative" style={{ width: 'min(100%, calc(min(78vh, 760px) * 9 / 16))', aspectRatio: '9 / 16' }}>
+                    <div className="relative mx-auto" style={{ width: 'min(100%, calc(min(78vh, 760px) * 9 / 16))', aspectRatio: '9 / 16' }}>
                         <video
                             ref={ref}
                             className="w-full h-full object-cover rounded-[28px] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] bg-white"
